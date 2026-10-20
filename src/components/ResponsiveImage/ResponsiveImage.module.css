@@ -1,0 +1,12 @@
+/*
+ * Sizing is controlled through custom properties so each section can set
+ * its own aspect ratio and breakpoints without specificity conflicts.
+ */
+.image {
+  display: block;
+  width: var(--image-width, 100%);
+  height: var(--image-height, auto);
+  min-height: var(--image-min-height, 0);
+  aspect-ratio: var(--ratio, auto);
+  object-fit: cover;
+}

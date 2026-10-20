@@ -1,0 +1,98 @@
+.row {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: space-between;
+  gap: 16px;
+  min-width: 0;
+  color: var(--color-navy);
+  text-decoration: none;
+}
+
+.row:hover {
+  color: var(--color-navy);
+}
+
+.row:focus-visible {
+  outline-offset: 2px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+a.row:hover .title {
+  text-decoration-color: currentColor;
+}
+
+.description {
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.arrow {
+  color: var(--color-blue);
+  transition: transform var(--transition-fast);
+}
+
+a.row:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* Quick access: the end padding is a custom property so the list can drop it. */
+.quick {
+  align-items: center;
+  padding: 22px var(--link-row-pad-end, 20px) 22px 0;
+}
+
+.quick .title {
+  font-size: 19px;
+  line-height: 1.25;
+}
+
+.service {
+  align-items: flex-start;
+  padding: 16px 0;
+}
+
+.service .title {
+  font-size: 21px;
+  line-height: 1.2;
+}
+
+.service .arrow {
+  margin-top: 4px;
+}
+
+.resource {
+  align-items: flex-start;
+  padding: 20px 0;
+}
+
+.resource .title {
+  font-size: 19px;
+  line-height: 1.25;
+}
+
+.resource .arrow {
+  margin-top: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a.row:hover .arrow {
+    transform: none;
+  }
+}

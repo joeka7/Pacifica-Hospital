@@ -1,0 +1,49 @@
+.section {
+  padding-block: var(--section-lg);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px 48px;
+  margin-bottom: 56px;
+}
+
+.heading {
+  font-weight: 600;
+  font-stretch: 104%;
+  font-size: clamp(38px, 4.4vw, 60px);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  color: var(--color-navy);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 48px 32px;
+}
+
+/*
+ * Pin the 4 / 2 / 1 column counts. auto-fit at 250px alone yields three
+ * columns (one orphaned group) between roughly 1000px and 1175px.
+ */
+@media (min-width: 1080px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1079px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

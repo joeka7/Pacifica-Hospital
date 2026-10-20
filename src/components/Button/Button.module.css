@@ -1,0 +1,86 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1.5px solid transparent;
+  border-radius: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+/* Sizes */
+.md {
+  min-height: 46px;
+  padding: 0 22px;
+  font-size: 16px;
+}
+
+.lg {
+  min-height: 50px;
+  padding: 0 24px;
+  font-size: 17px;
+}
+
+/* Variants (after sizes so variant padding wins) */
+.primary {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+}
+
+a.primary:hover {
+  background-color: var(--color-navy-hover);
+  color: var(--color-white);
+}
+
+a.primary:active {
+  background-color: var(--color-navy-active);
+}
+
+.accent {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+
+a.accent:hover {
+  background-color: var(--color-blue-hover);
+  color: var(--color-white);
+}
+
+a.accent:active {
+  background-color: var(--color-blue-active);
+}
+
+.secondary {
+  padding-inline: 22px;
+  background-color: transparent;
+  border-color: var(--color-rule-strong);
+  color: var(--color-navy);
+}
+
+a.secondary:hover {
+  background-color: var(--color-surface);
+  border-color: var(--color-navy);
+  color: var(--color-navy);
+}
+
+.inverse {
+  background-color: var(--color-white);
+  color: var(--color-navy);
+}
+
+a.inverse:hover {
+  background-color: var(--color-photo-light);
+  color: var(--color-navy);
+}
+
+.static {
+  cursor: default;
+}

@@ -1,0 +1,79 @@
+.footer {
+  --focus-color: var(--color-white);
+  --link-color: var(--color-on-navy);
+  --link-hover-color: var(--color-white);
+  padding: var(--section-sm) 0 36px;
+  background: var(--color-navy);
+  color: var(--color-on-navy);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.wordmark {
+  max-width: 11em;
+  margin-bottom: 56px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-stretch: 112%;
+  font-size: clamp(36px, 5.4vw, 76px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--color-white);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--color-rule-on-navy);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.heading {
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.email,
+.email:hover {
+  color: var(--color-white);
+}
+
+.email:hover {
+  text-decoration-thickness: 2px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.navLink {
+  text-decoration: none;
+}
+
+a.navLink:hover {
+  text-decoration: underline;
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 48px;
+  font-size: 14px;
+}
+
+@media (max-width: 767px) {
+  .bottom {
+    flex-direction: column;
+  }
+}

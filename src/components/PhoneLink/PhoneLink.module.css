@@ -1,0 +1,49 @@
+.phone {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.onDark,
+.onDark:hover {
+  color: var(--color-white);
+}
+
+.onDark:hover {
+  text-decoration-thickness: 2px;
+}
+
+.heroEmergency,
+.sectionEmergency {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-stretch: 108%;
+  line-height: 1.05;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+.heroEmergency {
+  font-size: 38px;
+  letter-spacing: -0.02em;
+  color: var(--color-navy);
+}
+
+.heroEmergency:hover {
+  color: var(--color-blue);
+}
+
+/*
+ * 13cqi caps the size to its column (the parent sets container-type) so the
+ * unbreakable number never spills into the next grid column. Without a
+ * container ancestor, cqi falls back to viewport units.
+ */
+.sectionEmergency {
+  font-size: clamp(40px, min(4.4vw, 13cqi), 56px);
+  letter-spacing: -0.025em;
+  color: var(--color-red);
+}
+
+.sectionEmergency:hover {
+  color: var(--color-red);
+  text-decoration-thickness: 3px;
+}

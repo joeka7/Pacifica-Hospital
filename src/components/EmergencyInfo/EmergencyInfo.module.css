@@ -1,0 +1,51 @@
+.section {
+  padding-bottom: var(--section-xl);
+}
+
+.frame {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px 64px;
+  padding: 48px 0 56px;
+  border-top: 4px solid var(--color-red);
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.heading {
+  margin-bottom: 16px;
+  font-weight: 600;
+  font-stretch: 104%;
+  font-size: 40px;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--color-navy);
+}
+
+.body {
+  color: var(--color-text);
+}
+
+/* Lets the ER number size itself to this column. */
+.contact {
+  container-type: inline-size;
+}
+
+.label {
+  margin-bottom: 8px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.address {
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+@media (max-width: 767px) {
+  .heading {
+    font-size: 32px;
+  }
+}
