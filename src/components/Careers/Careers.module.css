@@ -1,0 +1,74 @@
+.section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* The image fills whatever height the panel needs, with a floor. */
+.media {
+  position: relative;
+  flex: 1 1 440px;
+  min-width: 0;
+  min-height: 520px;
+}
+
+.image {
+  --image-height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+.panel {
+  --focus-color: var(--color-white);
+  --link-color: var(--color-on-navy);
+  --link-hover-color: var(--color-white);
+  display: flex;
+  flex: 1 1 440px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  min-width: 0;
+  padding: var(--section-sm) 56px;
+  background: var(--color-navy);
+  color: var(--color-on-navy);
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-on-navy-accent);
+}
+
+.heading {
+  max-width: 11em;
+  font-weight: 600;
+  font-stretch: 104%;
+  font-size: clamp(36px, 4vw, 54px);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  color: var(--color-white);
+}
+
+.body {
+  max-width: 32em;
+}
+
+.benefits {
+  max-width: 32em;
+  font-size: 15px;
+}
+
+.button {
+  align-self: flex-start;
+}
+
+@media (max-width: 767px) {
+  .media {
+    min-height: 280px;
+  }
+
+  .panel {
+    padding: 56px 20px;
+  }
+}

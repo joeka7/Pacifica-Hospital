@@ -1,0 +1,13 @@
+.mark {
+  display: block;
+  flex: none;
+}
+
+.square {
+  fill: var(--color-navy);
+}
+
+.plus {
+  fill: none;
+  stroke: var(--color-white);
+}

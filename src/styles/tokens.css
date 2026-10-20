@@ -1,0 +1,70 @@
+:root {
+  /* Brand */
+  --color-navy: #0C2340;
+  --color-blue: #2358A6;
+  /* Emergency only */
+  --color-red: #B42318;
+  --color-red-on-dark: #E5484D;
+
+  /* Surfaces */
+  --color-white: #FFFFFF;
+  --color-surface: #F5F7FA;
+  --color-photo: #C9D8EA;
+  --color-photo-light: #E4ECF6;
+
+  /* Text */
+  --color-text: #33425A;
+  --color-text-muted: #56647A;
+
+  /* Rules */
+  --color-rule: #D3DAE4;
+  --color-rule-strong: #AEBACB;
+
+  /* On navy */
+  --color-on-navy: #C8D5E6;
+  --color-on-navy-accent: #9DBBE3;
+  --color-rule-on-navy: #2A4366;
+
+  /* Interaction */
+  --color-navy-hover: #1A3A63;
+  --color-navy-active: #081A30;
+  --color-blue-hover: #1B4785;
+  --color-blue-active: #163A6E;
+
+  /* Type */
+  --font-display: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
+  --font-body: 'Public Sans', system-ui, sans-serif;
+
+  /* Layout */
+  --container: 1280px;
+  --page-pad: 40px;
+
+  /* Section spacing tiers */
+  --section-xl: 136px;
+  --section-lg: 128px;
+  --section-md: 120px;
+  --section-sm: 88px;
+
+  /* Motion */
+  --transition-fast: 150ms ease-out;
+}
+
+@media (max-width: 1079px) {
+  :root {
+    --page-pad: 32px;
+    --section-xl: 104px;
+    --section-lg: 96px;
+    --section-md: 88px;
+    --section-sm: 72px;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --page-pad: 20px;
+    --section-xl: 80px;
+    --section-lg: 80px;
+    --section-md: 72px;
+    --section-sm: 64px;
+  }
+}

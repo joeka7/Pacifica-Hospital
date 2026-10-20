@@ -1,0 +1,53 @@
+.section {
+  position: relative;
+}
+
+.image {
+  --ratio: 21 / 8;
+  --image-min-height: 360px;
+}
+
+/* Spans the container width so the panel lines up with the content edge. */
+.overlay {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.panel {
+  max-width: 520px;
+  padding: 26px 32px;
+  background: var(--color-white);
+}
+
+.title {
+  margin-bottom: 6px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-navy);
+}
+
+.text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+@media (max-width: 767px) {
+  .image {
+    --ratio: 4 / 3;
+    --image-min-height: 0;
+  }
+
+  .overlay {
+    position: static;
+  }
+
+  .panel {
+    max-width: none;
+    padding: 24px 0 0;
+  }
+}
