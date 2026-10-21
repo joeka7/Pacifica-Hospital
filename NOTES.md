@@ -15,12 +15,9 @@ Items to confirm with PHV before launch. Code locations are noted so each can be
 
 ## Photography
 
-All four images are labeled placeholders (`isPlaceholder: true` in `src/content/images.ts`). Replace them with on-site photography, update `alt` text, and set `isPlaceholder: false`. Each entry's `brief` field holds the shot description:
+The hero, mental health and careers images are now licensed Pexels stock photos (entries with a `stockSource` in `src/content/images.ts`; credits and licence in `src/assets/images/image-sources.md`). They are interim: replace them with on-site photography shot to each entry's `brief`, update `alt` text, and remove `stockSource`. They show no PHV staff or spaces, so don't caption them as PHV.
 
-- Hero: a PHV nurse talks with an older patient at the bedside
-- Campus: the PHV building in early morning light, real signage visible
-- Mental health: counselor and client seated, faces partly turned for privacy
-- Careers: PHV nurses walking a corridor, real staff
+The campus image is still a labeled placeholder (`isPlaceholder: true`). It needs a real photograph of the PHV building (early morning light, real signage visible). Stock would misrepresent the facility.
 
 # About page: open verification items
 
@@ -47,11 +44,8 @@ The About page (`/about`) lives in `src/pages/AboutPage.tsx`; all of its copy is
 
 ## Photography
 
-All three About images are labeled placeholders (`isPlaceholder: true` in `src/content/images.ts`). Each `brief` holds the full shot description:
-
-- `aboutCampusWide` (21:9): the Sun Valley campus in early morning light, from across San Fernando Road, real signage, no people in focus
-- `aboutCorridor` (3:2): an inpatient corridor at mid-morning, one-point perspective, one staff member walking away from the camera
-- `aboutCareTeam` (3:2): a nurse, physician and case manager conferring at a nurses’ station, real staff, mid-conversation
+- `aboutCampusWide` (21:9) is still a labeled placeholder. It is captioned with the hospital's name and address, so it needs a real photograph: the Sun Valley campus in early morning light, from across San Fernando Road, real signage, no people in focus.
+- `aboutCorridor` and `aboutCareTeam` (3:2) are interim Pexels stock photos (see the homepage Photography note). Replace them with on-site shots to their `brief`: an inpatient corridor with one staff member walking away, and a nurse, physician and case manager at a nurses’ station.
 
 ## Hosting
 
@@ -141,4 +135,6 @@ The site links to official PHV documents (PDFs on pacificahospital.com), the Hea
 
 ## Photography
 
-New placeholders, all `isPlaceholder: true` with shot briefs in `src/content/images.ts`: `serviceImages` (11 service pages and the Emergency Department) and `physicianPortrait()` for profiles. The Mental Health Clinic and Careers pages reuse the approved homepage placeholders.
+- `serviceImages` (11 service pages and the Emergency Department) are interim Pexels stock photos chosen to match each service. Shot briefs for the on-site replacements stay in `src/content/images.ts`. The Emergency Department image is a generic treatment area, not an entrance, so it doesn't pass for PHV's own ED.
+- `physicianPortrait()` is still a placeholder for every profile. Don't substitute stock portraits for named physicians; obtain approved headshots.
+- The Mental Health Clinic and Careers pages reuse the homepage mental health and careers photos.

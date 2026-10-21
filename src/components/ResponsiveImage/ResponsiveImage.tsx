@@ -15,6 +15,8 @@ export function ResponsiveImage({ image, priority = false, className }: Responsi
     <img
       className={cx(styles.image, className)}
       src={image.src}
+      srcSet={image.srcSet}
+      sizes={image.sizes}
       width={image.width}
       height={image.height}
       alt={image.alt}
