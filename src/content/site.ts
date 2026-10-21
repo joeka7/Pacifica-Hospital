@@ -34,8 +34,6 @@ export type ContactItem =
 
 export const site = {
   name: 'Pacifica Hospital of the Valley',
-  shortName: 'Pacifica Hospital',
-  nameSuffix: 'of the Valley',
 }
 
 export interface PageMeta {
