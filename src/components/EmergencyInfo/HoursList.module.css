@@ -29,3 +29,8 @@
   font-variant-numeric: tabular-nums;
   color: var(--color-navy);
 }
+
+/* Long addresses may wrap at any point on narrow screens. */
+.email {
+  overflow-wrap: anywhere;
+}

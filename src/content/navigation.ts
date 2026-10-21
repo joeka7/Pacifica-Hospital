@@ -22,7 +22,7 @@ export const mainNav: LabeledLink[] = [
   { label: 'Additional care', link: links.additionalCare },
   { label: 'Mental health', link: links.mentalHealthClinic },
   { label: 'Patient resources', link: links.patientResourcesNav },
-  { label: 'About', link: links.about },
+  { label: 'About', link: links.aboutPage },
 ]
 
 export const headerCta: LabeledLink = { label: 'Find a physician', link: links.physicians }
@@ -43,7 +43,7 @@ export const footerNav: { care: LabeledLink[]; about: LabeledLink[] } = {
     { label: 'Mental health clinic', link: links.mentalHealthClinic },
   ],
   about: [
-    { label: 'About Pacifica Hospital', link: links.about },
+    { label: 'About Pacifica Hospital', link: links.aboutPage },
     { label: 'Careers', link: links.careers },
     { label: 'HIPAA privacy', link: links.hipaa },
     { label: 'Legal terms', link: links.legal },

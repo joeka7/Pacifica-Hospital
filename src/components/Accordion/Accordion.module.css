@@ -1,0 +1,81 @@
+.list {
+  border-top: 1px solid var(--color-navy);
+}
+
+.item {
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 48px;
+  padding: 18px 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+.summary:focus-visible {
+  outline-offset: 2px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-navy);
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.summary:hover .title {
+  text-decoration-color: currentColor;
+}
+
+/* Plus that becomes a minus; drawn with two thin bars. */
+.icon {
+  position: relative;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  color: var(--color-blue);
+}
+
+.icon::before,
+.icon::after {
+  content: '';
+  position: absolute;
+  top: 7px;
+  left: 0;
+  width: 16px;
+  height: 2px;
+  background: currentColor;
+  transition: transform var(--transition-fast);
+}
+
+.icon::after {
+  transform: rotate(90deg);
+}
+
+.item[open] .icon::after {
+  transform: rotate(0deg);
+}
+
+.panel {
+  padding: 0 0 28px;
+}
+
+@media (max-width: 767px) {
+  .title {
+    font-size: 19px;
+  }
+}

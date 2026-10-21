@@ -1,0 +1,109 @@
+.intro {
+  padding-top: 72px;
+}
+
+.heading {
+  margin-top: 20px;
+  font-weight: 600;
+  font-stretch: 104%;
+  color: var(--color-navy);
+}
+
+/* Same scale as the About closing heading. */
+.lg {
+  max-width: 10em;
+  font-size: clamp(44px, 7vw, 100px);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+/* Same scale as the About section headings. */
+.md {
+  max-width: 14em;
+  font-size: clamp(40px, 5.4vw, 76px);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.row {
+  align-items: start;
+  margin-top: 56px;
+}
+
+.facts {
+  grid-column: 1 / span 5;
+  border-top: 1px solid var(--color-navy);
+}
+
+.fact {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-rule);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+  grid-column: 7 / span 6;
+  min-width: 0;
+}
+
+.mainSolo {
+  grid-column: 1 / span 8;
+}
+
+.lead {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 34em;
+  font-size: 21px;
+  line-height: 1.55;
+  color: var(--color-text);
+}
+
+@media (max-width: 1079px) {
+  .facts {
+    grid-column: 1 / span 6;
+  }
+
+  .main {
+    grid-column: 7 / -1;
+  }
+
+  .mainSolo {
+    grid-column: 1 / span 10;
+  }
+
+  .lead {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 767px) {
+  .intro {
+    padding-top: 40px;
+  }
+
+  .row {
+    margin-top: 36px;
+  }
+
+  .facts,
+  .main,
+  .mainSolo {
+    grid-column: 1 / -1;
+  }
+
+  .facts + .main {
+    margin-top: 28px;
+  }
+
+  .lead {
+    font-size: 18px;
+  }
+}

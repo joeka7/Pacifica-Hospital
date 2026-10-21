@@ -1,0 +1,101 @@
+.hero {
+  padding-top: 72px;
+}
+
+.heading {
+  max-width: 8.6em;
+  margin-top: 20px;
+  font-weight: 600;
+  font-stretch: 104%;
+  font-size: clamp(44px, 9.4vw, 136px);
+  line-height: 0.92;
+  letter-spacing: -0.048em;
+  /* Balance would break after "A better"; the intended wrap is "A better standard / of care." */
+  text-wrap: pretty;
+  color: var(--color-navy);
+}
+
+.row {
+  align-items: end;
+  margin-top: 64px;
+}
+
+.facts {
+  grid-column: 1 / span 5;
+  border-top: 1px solid var(--color-navy);
+}
+
+.fact {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-rule);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.lead {
+  grid-column: 7 / span 5;
+  font-size: 21px;
+  line-height: 1.55;
+  color: var(--color-text);
+}
+
+.figure {
+  margin-top: 80px;
+}
+
+.image {
+  --ratio: 21 / 9;
+  --image-min-height: 420px;
+}
+
+.caption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 14px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 1079px) {
+  .facts {
+    grid-column: 1 / span 6;
+  }
+
+  .lead {
+    grid-column: 7 / span 6;
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    padding-top: 40px;
+  }
+
+  .row {
+    margin-top: 40px;
+  }
+
+  .facts,
+  .lead {
+    grid-column: 1 / -1;
+  }
+
+  .lead {
+    margin-top: 28px;
+    font-size: 18px;
+  }
+
+  .figure {
+    margin-top: 48px;
+  }
+
+  .image {
+    --ratio: 4 / 3;
+    --image-min-height: 0;
+  }
+}

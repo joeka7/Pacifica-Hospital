@@ -1,0 +1,4 @@
+/* Guards against sideways scroll from full-bleed images, as on the About page. */
+.page {
+  overflow-x: clip;
+}

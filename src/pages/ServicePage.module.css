@@ -1,0 +1,65 @@
+/* The image and key facts continue the page header, so they sit closer than a full section. */
+.overviewWrap {
+  padding-top: 72px;
+}
+
+.overview {
+  align-items: end;
+  row-gap: 40px;
+}
+
+.media {
+  grid-column: 1 / span 7;
+  min-width: 0;
+}
+
+.image {
+  --ratio: 3 / 2;
+}
+
+.glance {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  grid-column: 9 / -1;
+  min-width: 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-navy);
+}
+
+.glanceHeading {
+  margin-bottom: 4px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+@media (max-width: 1079px) {
+  .media,
+  .glance {
+    grid-column: 1 / -1;
+  }
+
+  /* Full-width on tablets: a wider crop keeps the image from dominating. */
+  .image {
+    --ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 767px) {
+  .image {
+    --ratio: 4 / 3;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .actions > * {
+    width: 100%;
+  }
+}

@@ -28,6 +28,13 @@ a.link:hover {
   text-decoration: underline;
 }
 
+a.link[aria-current] {
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--color-blue);
+  text-underline-offset: 8px;
+}
+
 .cta {
   margin-top: 20px;
 }

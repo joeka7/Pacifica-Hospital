@@ -1,0 +1,112 @@
+.section {
+  padding: var(--space-section-xl) 0 136px;
+}
+
+.heading {
+  max-width: 10em;
+  font-stretch: 104%;
+  font-size: clamp(46px, 7vw, 100px);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  color: var(--color-navy);
+}
+
+.row {
+  align-items: start;
+  margin-top: 56px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  grid-column: 1 / span 5;
+}
+
+.body {
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.contacts {
+  --link-color: var(--color-navy);
+  --link-hover-color: var(--color-navy);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 32px;
+  grid-column: 7 / -1;
+}
+
+.contact {
+  padding: 16px 0;
+  border-top: 1px solid var(--color-navy);
+}
+
+/* Red is reserved for emergency care. */
+.emergency {
+  border-top: 3px solid var(--color-red);
+}
+
+.label {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.value {
+  margin-top: 4px;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.3;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-navy);
+}
+
+.phone {
+  text-decoration: none;
+}
+
+.phone:hover {
+  text-decoration-line: underline;
+}
+
+@media (max-width: 1079px) {
+  .section {
+    padding-bottom: 96px;
+  }
+
+  .main,
+  .contacts {
+    grid-column: 1 / -1;
+  }
+
+  .contacts {
+    margin-top: 48px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding-bottom: 72px;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .buttons > * {
+    width: 100%;
+  }
+
+  .contacts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

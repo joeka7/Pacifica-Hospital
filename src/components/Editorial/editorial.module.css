@@ -1,0 +1,72 @@
+/*
+ * Shared editorial building blocks, established on the About page and used
+ * by every interior page. Components combine these with their own module
+ * classes via cx(); import this module first so section overrides come
+ * later in the cascade.
+ */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--grid-gap);
+}
+
+.section {
+  padding-top: var(--space-section-xl);
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-navy);
+}
+
+/* Section numbers and other small tabular labels. */
+.number {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* "Who we are" and "Our mission and vision" */
+.headingXl {
+  max-width: 11em;
+  font-weight: 600;
+  font-stretch: 104%;
+  font-size: clamp(40px, 5.4vw, 76px);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  color: var(--color-navy);
+}
+
+/* Values and approach */
+.headingLg {
+  font-weight: 600;
+  font-stretch: 104%;
+  font-size: clamp(38px, 4.4vw, 60px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--color-navy);
+}
+
+/* Content sections on interior pages */
+.headingMd {
+  font-weight: 600;
+  font-stretch: 104%;
+  font-size: clamp(30px, 3.2vw, 44px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--color-navy);
+}
+
+.body {
+  color: var(--color-text);
+}
+
+/* Bottom rhythm for pages that end on a content section rather than a closing. */
+.pageEnd {
+  padding-bottom: var(--space-section-xl);
+}

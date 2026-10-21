@@ -5,12 +5,14 @@ interface TextLinkProps {
   href: string | null
   className?: string
   lang?: string
+  /** Marks the link to the page ("page") or section ("true") being viewed. */
+  ariaCurrent?: 'page' | 'true'
   onClick?: () => void
   children: ReactNode
 }
 
 /** A plain link that degrades to text when its destination is unresolved. */
-export function TextLink({ href, className, lang, onClick, children }: TextLinkProps) {
+export function TextLink({ href, className, lang, ariaCurrent, onClick, children }: TextLinkProps) {
   if (href === null) {
     return (
       <span className={className} lang={lang}>
@@ -20,7 +22,7 @@ export function TextLink({ href, className, lang, onClick, children }: TextLinkP
   }
 
   return (
-    <a href={href} className={className} lang={lang} onClick={onClick}>
+    <a href={href} className={className} lang={lang} aria-current={ariaCurrent} onClick={onClick}>
       {children}
     </a>
   )

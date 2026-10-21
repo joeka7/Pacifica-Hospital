@@ -1,0 +1,101 @@
+.noticeWrap {
+  padding-top: 64px;
+}
+
+.whenText {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  grid-column: 1 / span 6;
+  min-width: 0;
+}
+
+.whenText > p {
+  max-width: 36em;
+}
+
+.listLabel {
+  margin-bottom: 12px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-navy);
+}
+
+.symptoms {
+  grid-column: 8 / -1;
+  align-self: start;
+  min-width: 0;
+  padding-top: 16px;
+}
+
+.expectIntro {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  grid-column: 1 / span 5;
+  min-width: 0;
+}
+
+.steps {
+  grid-column: 7 / -1;
+}
+
+.bringRow {
+  align-items: start;
+}
+
+.media {
+  grid-column: 1 / span 7;
+  min-width: 0;
+}
+
+.image {
+  --ratio: 3 / 2;
+}
+
+.bring {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  grid-column: 9 / -1;
+  min-width: 0;
+}
+
+.conditionsIntro {
+  max-width: 40em;
+  margin-bottom: 24px;
+}
+
+.teamText {
+  max-width: 40em;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 1079px) {
+  .whenText,
+  .symptoms,
+  .expectIntro,
+  .steps,
+  .media,
+  .bring {
+    grid-column: 1 / -1;
+  }
+
+  .symptoms,
+  .steps,
+  .bring {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .noticeWrap {
+    padding-top: 40px;
+  }
+
+  .image {
+    --ratio: 4 / 3;
+  }
+}

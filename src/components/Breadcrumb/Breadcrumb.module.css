@@ -1,0 +1,33 @@
+.nav {
+  padding-top: 36px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.item {
+  display: flex;
+  gap: 10px;
+}
+
+/* Separator is decoration, not content. */
+.item + .item::before {
+  content: '/';
+  color: var(--color-rule-strong);
+}
+
+.link {
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.link:hover {
+  color: var(--color-navy);
+  text-decoration: underline;
+}

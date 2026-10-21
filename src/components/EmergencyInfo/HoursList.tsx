@@ -13,7 +13,15 @@ export function HoursList({ rows }: HoursListProps) {
         <div key={row.label} className={styles.row}>
           <dt className={styles.term}>{row.label}</dt>
           <dd className={styles.value}>
-            {'phone' in row ? <PhoneLink phone={row.phone} /> : row.value}
+            {'phone' in row ? (
+              <PhoneLink phone={row.phone} />
+            ) : 'email' in row ? (
+              <a href={`mailto:${row.email}`} className={styles.email}>
+                {row.email}
+              </a>
+            ) : (
+              row.value
+            )}
           </dd>
         </div>
       ))}

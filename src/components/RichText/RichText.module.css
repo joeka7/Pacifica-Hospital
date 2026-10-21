@@ -1,0 +1,31 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: var(--color-text);
+}
+
+.paragraph {
+  max-width: 40em;
+}
+
+.listBlock {
+  margin-top: 8px;
+}
+
+/* HoursList rows sit on a light top rule, like the list blocks. */
+.details {
+  max-width: 40em;
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-rule-strong);
+}
+
+.listLabel {
+  margin-bottom: 12px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-navy);
+}
