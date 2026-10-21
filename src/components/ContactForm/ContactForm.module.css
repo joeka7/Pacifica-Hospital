@@ -1,0 +1,122 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.status {
+  padding: 14px 0;
+  border-top: 1px solid var(--color-navy);
+  border-bottom: 1px solid var(--color-rule);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--color-text);
+}
+
+.fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 24px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.label {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-navy);
+}
+
+.required,
+.hint {
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+/* Square, ruled fields that match the button and header controls. */
+.input,
+.textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 11px 14px;
+  border: 1.5px solid var(--color-rule-strong);
+  border-radius: 0;
+  background: var(--color-white);
+  color: var(--color-navy);
+  font: inherit;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.textarea {
+  resize: vertical;
+}
+
+.input:hover,
+.textarea:hover {
+  border-color: var(--color-navy);
+}
+
+.input:focus-visible,
+.textarea:focus-visible {
+  border-color: var(--color-blue);
+  outline-offset: 0;
+}
+
+.input:disabled,
+.textarea:disabled {
+  border-color: var(--color-rule);
+  background: var(--color-surface);
+  cursor: not-allowed;
+}
+
+.actions {
+  display: flex;
+}
+
+.submit {
+  cursor: pointer;
+}
+
+.submit:not(:disabled):hover {
+  background-color: var(--color-navy-hover);
+}
+
+.submit:not(:disabled):active {
+  background-color: var(--color-navy-active);
+}
+
+.submit:disabled {
+  border-color: var(--color-rule);
+  background-color: var(--color-surface);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+@media (max-width: 767px) {
+  .pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .submit {
+    width: 100%;
+  }
+}

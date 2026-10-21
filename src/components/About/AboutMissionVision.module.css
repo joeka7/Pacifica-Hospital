@@ -1,0 +1,72 @@
+.heading {
+  grid-column: 4 / -1;
+}
+
+.statements {
+  margin-top: 56px;
+  border-top: 1px solid var(--color-navy);
+}
+
+.row {
+  padding: 48px 0 56px;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.rowHead {
+  grid-column: 1 / span 3;
+}
+
+.number {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.label {
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--color-navy);
+}
+
+.rowBody {
+  grid-column: 4 / -1;
+  min-width: 0;
+}
+
+/* Negative indent hangs the opening quote outside the text edge. */
+.statement {
+  max-width: 19em;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(30px, 3.8vw, 54px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  text-indent: -0.42em;
+  color: var(--color-navy);
+}
+
+.support {
+  max-width: 36em;
+  margin-top: 24px;
+}
+
+@media (max-width: 1079px) {
+  .heading,
+  .rowHead,
+  .rowBody {
+    grid-column: 1 / -1;
+  }
+
+  .rowHead {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .row {
+    padding: 36px 0 40px;
+  }
+
+  .statement {
+    text-indent: 0;
+  }
+}

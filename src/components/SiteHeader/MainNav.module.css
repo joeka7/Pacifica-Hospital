@@ -21,6 +21,14 @@ a.link:hover {
   text-underline-offset: 6px;
 }
 
+/* After :hover so the current item or section keeps its offset when hovered. */
+a.link[aria-current] {
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--color-blue);
+  text-underline-offset: 8px;
+}
+
 /* Header room is tight just above the tablet breakpoint. */
 @media (max-width: 1119px) {
   .list {

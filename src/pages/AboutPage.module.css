@@ -1,0 +1,4 @@
+/* Guards against sideways scroll from the full-bleed campus image. */
+.page {
+  overflow-x: clip;
+}

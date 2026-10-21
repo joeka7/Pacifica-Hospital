@@ -1,0 +1,32 @@
+.noticeWrap {
+  padding-top: 64px;
+}
+
+.visit {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px 48px;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--color-text);
+}
+
+.rows {
+  max-width: 40em;
+  margin-top: 28px;
+}
+
+@media (max-width: 767px) {
+  .noticeWrap {
+    padding-top: 40px;
+  }
+
+  .visit {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

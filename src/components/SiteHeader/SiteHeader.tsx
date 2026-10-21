@@ -11,7 +11,12 @@ import styles from './SiteHeader.module.css'
 const MENU_ID = 'mobile-menu'
 const DESKTOP_QUERY = '(min-width: 1080px)'
 
-export function SiteHeader() {
+interface SiteHeaderProps {
+  /** Path of the page being viewed, used to mark the current nav item. */
+  currentPath?: string
+}
+
+export function SiteHeader({ currentPath }: SiteHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
 
@@ -45,7 +50,7 @@ export function SiteHeader() {
         <Container className={styles.inner}>
           <Logo />
           <div className={styles.desktop}>
-            <MainNav />
+            <MainNav currentPath={currentPath} />
             <Button href={headerCta.link.href} variant="accent" size="md" arrow>
               {headerCta.label}
             </Button>
@@ -62,7 +67,12 @@ export function SiteHeader() {
           </button>
         </Container>
       </div>
-      <MobileMenu id={MENU_ID} open={menuOpen} onNavigate={() => setMenuOpen(false)} />
+      <MobileMenu
+        id={MENU_ID}
+        open={menuOpen}
+        onNavigate={() => setMenuOpen(false)}
+        currentPath={currentPath}
+      />
     </header>
   )
 }

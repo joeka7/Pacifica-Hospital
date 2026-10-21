@@ -1,0 +1,61 @@
+.callBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-navy);
+}
+
+.callLabel {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-navy);
+}
+
+.noticeWrap {
+  padding-top: 64px;
+}
+
+.approach {
+  align-items: start;
+}
+
+.media {
+  grid-column: 1 / span 5;
+  min-width: 0;
+}
+
+.image {
+  --ratio: 4 / 5;
+}
+
+.approachText {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  grid-column: 7 / -1;
+  min-width: 0;
+}
+
+@media (max-width: 1079px) {
+  .media,
+  .approachText {
+    grid-column: 1 / -1;
+  }
+
+  .approachText {
+    margin-top: 40px;
+  }
+
+  .image {
+    --ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 767px) {
+  .noticeWrap {
+    padding-top: 40px;
+  }
+}

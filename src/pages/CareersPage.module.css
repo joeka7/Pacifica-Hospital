@@ -1,0 +1,51 @@
+.intro {
+  align-items: start;
+}
+
+.media {
+  grid-column: 1 / span 5;
+  min-width: 0;
+}
+
+.image {
+  --ratio: 4 / 5;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  grid-column: 7 / -1;
+  min-width: 0;
+}
+
+.text > p {
+  max-width: 38em;
+}
+
+.benefits {
+  margin-top: 20px;
+}
+
+.benefitsHeading {
+  margin-bottom: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-navy);
+}
+
+@media (max-width: 1079px) {
+  .media,
+  .text {
+    grid-column: 1 / -1;
+  }
+
+  .text {
+    margin-top: 40px;
+  }
+
+  .image {
+    --ratio: 4 / 3;
+  }
+}

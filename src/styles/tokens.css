@@ -44,6 +44,11 @@
   --section-lg: 128px;
   --section-md: 120px;
   --section-sm: 88px;
+  /* About page section rhythm */
+  --space-section-xl: 144px;
+
+  /* 12-column grid gutter (About page) */
+  --grid-gap: 24px;
 
   /* Motion */
   --transition-fast: 150ms ease-out;
@@ -56,6 +61,7 @@
     --section-lg: 96px;
     --section-md: 88px;
     --section-sm: 72px;
+    --space-section-xl: 104px;
   }
 }
 
@@ -66,5 +72,6 @@
     --section-lg: 80px;
     --section-md: 72px;
     --section-sm: 64px;
+    --space-section-xl: 80px;
   }
 }

@@ -1,0 +1,24 @@
+.list {
+  border-top: 1px solid var(--color-rule-strong);
+}
+
+.strongRule {
+  border-top-color: var(--color-navy);
+}
+
+.item {
+  display: flex;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.twoColumn {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 48px;
+}
+
+@media (max-width: 767px) {
+  .twoColumn {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
