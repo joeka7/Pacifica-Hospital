@@ -7,6 +7,7 @@ import { LinkRowList } from '../components/LinkRowList/LinkRowList'
 import { PageIntro } from '../components/PageIntro/PageIntro'
 import { PhoneLink } from '../components/PhoneLink/PhoneLink'
 import { ResponsiveImage } from '../components/ResponsiveImage/ResponsiveImage'
+import { imageSizes } from '../components/ResponsiveImage/sizes'
 import { RichText } from '../components/RichText/RichText'
 import { RuledList } from '../components/RuledList/RuledList'
 import { careersPage } from '../content/careers'
@@ -35,7 +36,7 @@ export function CareersPage() {
       <section className={shared.section} aria-labelledby={`${page.intro.id}-heading`}>
         <Container className={cx(shared.grid, styles.intro)}>
           <div className={styles.media}>
-            <ResponsiveImage image={images.careers} className={styles.image} />
+            <ResponsiveImage image={images.careers} sizes={imageSizes.portraitColumn} className={styles.image} />
           </div>
           <div className={styles.text}>
             <h2 id={`${page.intro.id}-heading`} className={shared.headingLg}>

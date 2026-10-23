@@ -12,7 +12,7 @@ All photos are from [Pexels](https://www.pexels.com/license/) under the Pexels L
 
 ## Files
 
-Each photo is one WebP file, `<name>.webp`, sized for its largest slot at 2x pixel density and scaled down by the browser everywhere else. The smaller `<name>-<width>.webp` renditions offered through `srcset` were removed on 23 October 2026.
+Each photo is one WebP file, `<name>.webp`, sized for its largest slot at 2x pixel density. It is the only copy kept in this folder: smaller renditions are generated at build time (see "Responsive renditions" below). The hand-made `<name>-<width>.webp` renditions were removed on 23 October 2026.
 
 | File | Size | Used on | Source photo | Photographer |
 | --- | --- | --- | --- | --- |
@@ -41,6 +41,22 @@ Processing notes:
 - `emergency-treatment-area` has a mild white-balance correction that reduces the original's strong yellow cast.
 - `contact-reception-desk` (downloaded 23 October 2026) is the full 6000×4000 original resized to 3:2 with no crop; the Pexels page lists its licence as "Pexels". It stands in for the original Contact page image (see "Original Contact page image" below) and is not captioned.
 - WebP, quality 78.
+
+## Responsive renditions
+
+Added 23 October 2026. Keep one file per photograph here; do not add resized copies.
+
+- `vite-imagetools` (configured in `vite.config.ts`) generates smaller WebP renditions from each source file during `vite build` (and on demand in `vite dev`). They are written to `dist/assets` with the rest of the build, cached in `node_modules/.cache/imagetools`, and never stored in this folder.
+- Renditions use the same settings as the source files: WebP, quality 78 (encoder effort 6). They are downscaled only, with no crop, so composition, aspect ratio and crop position are unchanged.
+- The source file is served unchanged as the largest `srcset` candidate, so large screens get exactly the file in this folder.
+- The widths for each photo are set on its `?w=…&as=srcset` import in `src/content/images.ts`. Each list stays below the source width:
+  - `hero-bedside-care`: 640, 960, 1280, 1600 (plus the 1920 source)
+  - 3:2 column photos (1600 source): 720, 960, 1280
+  - 4:5 portraits (`mental-health-consultation`, `careers-nursing-corridor`, 1200 source): 640, 960
+  - `Gary+Pacifica+Pic+3` (1500 source): 1080, 1280
+- Each slot's `sizes` value is in `src/components/ResponsiveImage/sizes.ts`. It is derived from the layout CSS, including the extra width a photo is drawn at where a 4:3 mobile box crops its sides. Update it when a slot's columns or ratio change.
+- When replacing a photo, keep the same file name and dimensions, or update `width`/`height` and the import's width list in `src/content/images.ts` to match.
+- `about-campus-wide.svg`, `logo.webp` and `fav-icon.webp` have no renditions.
 
 ## Still placeholders
 

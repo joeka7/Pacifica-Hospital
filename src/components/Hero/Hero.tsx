@@ -3,6 +3,7 @@ import { hero } from '../../content/site'
 import { Button } from '../Button/Button'
 import { Container } from '../Container/Container'
 import { ResponsiveImage } from '../ResponsiveImage/ResponsiveImage'
+import { imageSizes } from '../ResponsiveImage/sizes'
 import { EmergencySign } from './EmergencySign'
 import { FactsLine } from './FactsLine'
 import styles from './Hero.module.css'
@@ -17,7 +18,7 @@ export function Hero() {
         </h1>
         <div className={styles.row}>
           <div className={styles.media}>
-            <ResponsiveImage image={images.hero} priority className={styles.image} />
+            <ResponsiveImage image={images.hero} sizes={imageSizes.hero} priority className={styles.image} />
           </div>
           <div className={styles.text}>
             <p className={styles.lead}>{hero.lead}</p>

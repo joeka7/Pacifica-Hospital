@@ -9,6 +9,7 @@ import { PageClosing } from '../components/PageClosing/PageClosing'
 import { PageIntro } from '../components/PageIntro/PageIntro'
 import { PhoneLink } from '../components/PhoneLink/PhoneLink'
 import { ResponsiveImage } from '../components/ResponsiveImage/ResponsiveImage'
+import { imageSizes } from '../components/ResponsiveImage/sizes'
 import { StepList } from '../components/StepList/StepList'
 import { images } from '../content/images'
 import { links } from '../content/links'
@@ -54,7 +55,7 @@ export function MentalHealthClinicPage() {
       <section className={shared.section} aria-labelledby={`${page.approach.id}-heading`}>
         <Container className={cx(shared.grid, styles.approach)}>
           <div className={styles.media}>
-            <ResponsiveImage image={images.mentalHealth} className={styles.image} />
+            <ResponsiveImage image={images.mentalHealth} sizes={imageSizes.portraitColumn} className={styles.image} />
           </div>
           <div className={styles.approachText}>
             <h2 id={`${page.approach.id}-heading`} className={shared.headingLg}>

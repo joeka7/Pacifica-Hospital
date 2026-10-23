@@ -3,13 +3,14 @@ import { mentalHealthFeature } from '../../content/services'
 import { Button } from '../Button/Button'
 import { Container } from '../Container/Container'
 import { ResponsiveImage } from '../ResponsiveImage/ResponsiveImage'
+import { imageSizes } from '../ResponsiveImage/sizes'
 import styles from './MentalHealthFeature.module.css'
 
 export function MentalHealthFeature() {
   return (
     <section className={styles.band} aria-labelledby="mental-health-heading">
       <Container className={styles.inner}>
-        <ResponsiveImage image={images.mentalHealth} className={styles.image} />
+        <ResponsiveImage image={images.mentalHealth} sizes={imageSizes.mentalHealthFeature} className={styles.image} />
         <div className={styles.text}>
           <p className={styles.eyebrow}>{mentalHealthFeature.eyebrow}</p>
           <h2 id="mental-health-heading" className={styles.heading}>

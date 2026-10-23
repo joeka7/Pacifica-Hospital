@@ -9,6 +9,7 @@ import { PageClosing } from '../components/PageClosing/PageClosing'
 import { PageIntro } from '../components/PageIntro/PageIntro'
 import { PhoneLink } from '../components/PhoneLink/PhoneLink'
 import { ResponsiveImage } from '../components/ResponsiveImage/ResponsiveImage'
+import { imageSizes } from '../components/ResponsiveImage/sizes'
 import { RichText } from '../components/RichText/RichText'
 import { RuledList } from '../components/RuledList/RuledList'
 import { StepList } from '../components/StepList/StepList'
@@ -84,7 +85,7 @@ export function EmergencyPage() {
       <section className={shared.section} aria-labelledby={`${page.bring.id}-heading`}>
         <Container className={cx(shared.grid, styles.bringRow)}>
           <div className={styles.media}>
-            <ResponsiveImage image={page.image} className={styles.image} />
+            <ResponsiveImage image={page.image} sizes={imageSizes.mediaColumn} className={styles.image} />
           </div>
           <div className={styles.bring}>
             <h2 id={`${page.bring.id}-heading`} className={shared.headingMd}>

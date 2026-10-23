@@ -3,6 +3,7 @@ import { images } from '../../content/images'
 import { cx } from '../../utils/cx'
 import { Container } from '../Container/Container'
 import { ResponsiveImage } from '../ResponsiveImage/ResponsiveImage'
+import { imageSizes } from '../ResponsiveImage/sizes'
 import shared from '../Editorial/editorial.module.css'
 import styles from './AboutPeople.module.css'
 
@@ -14,7 +15,7 @@ export function AboutPeople() {
       <Container>
         <div className={cx(shared.grid, styles.top)}>
           <div className={styles.media}>
-            <ResponsiveImage image={images.aboutCareTeam} className={styles.image} />
+            <ResponsiveImage image={images.aboutCareTeam} sizes={imageSizes.aboutPeople} className={styles.image} />
           </div>
           <div className={styles.text}>
             <p className={shared.eyebrow}>{aboutPeople.eyebrow}</p>

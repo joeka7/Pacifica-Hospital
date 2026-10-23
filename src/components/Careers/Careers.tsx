@@ -2,13 +2,14 @@ import { careers } from '../../content/careers'
 import { images } from '../../content/images'
 import { Button } from '../Button/Button'
 import { ResponsiveImage } from '../ResponsiveImage/ResponsiveImage'
+import { imageSizes } from '../ResponsiveImage/sizes'
 import styles from './Careers.module.css'
 
 export function Careers() {
   return (
     <section className={styles.section} aria-labelledby="careers-heading">
       <div className={styles.media}>
-        <ResponsiveImage image={images.careers} className={styles.image} />
+        <ResponsiveImage image={images.careers} sizes={imageSizes.careersBand} className={styles.image} />
       </div>
       <div className={styles.panel}>
         <p className={styles.eyebrow}>{careers.eyebrow}</p>

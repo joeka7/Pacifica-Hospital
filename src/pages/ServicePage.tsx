@@ -8,6 +8,7 @@ import { LinkRowList } from '../components/LinkRowList/LinkRowList'
 import { PageClosing } from '../components/PageClosing/PageClosing'
 import { PageIntro } from '../components/PageIntro/PageIntro'
 import { ResponsiveImage } from '../components/ResponsiveImage/ResponsiveImage'
+import { imageSizes } from '../components/ResponsiveImage/sizes'
 import { links, servicePath } from '../content/links'
 import {
   findServicePage,
@@ -43,7 +44,7 @@ export function ServicePage({ page }: ServicePageProps) {
       <div className={styles.overviewWrap}>
         <Container className={cx(shared.grid, styles.overview)}>
           <div className={styles.media}>
-            <ResponsiveImage image={page.image} priority className={styles.image} />
+            <ResponsiveImage image={page.image} sizes={imageSizes.mediaColumn} priority className={styles.image} />
           </div>
           <aside className={styles.glance} aria-labelledby="glance-heading">
             <h2 id="glance-heading" className={cx(shared.eyebrow, styles.glanceHeading)}>

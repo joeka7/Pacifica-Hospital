@@ -3,6 +3,7 @@ import { images } from '../../content/images'
 import { cx } from '../../utils/cx'
 import { Container } from '../Container/Container'
 import { ResponsiveImage } from '../ResponsiveImage/ResponsiveImage'
+import { imageSizes } from '../ResponsiveImage/sizes'
 import { SectionRail } from '../Editorial/SectionRail'
 import shared from '../Editorial/editorial.module.css'
 import styles from './AboutIntro.module.css'
@@ -26,7 +27,7 @@ export function AboutIntro() {
         </div>
         <div className={cx(shared.grid, styles.split)}>
           <div className={styles.media}>
-            <ResponsiveImage image={images.aboutCorridor} className={styles.image} />
+            <ResponsiveImage image={images.aboutCorridor} sizes={imageSizes.aboutIntro} className={styles.image} />
           </div>
           <p className={styles.statement}>{aboutIntro.statement}</p>
         </div>

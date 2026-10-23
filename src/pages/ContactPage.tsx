@@ -8,6 +8,7 @@ import { InteriorPage } from '../components/InteriorPage/InteriorPage'
 import { LinkRowList } from '../components/LinkRowList/LinkRowList'
 import { PageIntro } from '../components/PageIntro/PageIntro'
 import { ResponsiveImage } from '../components/ResponsiveImage/ResponsiveImage'
+import { imageSizes } from '../components/ResponsiveImage/sizes'
 import { contactForm, contactPage } from '../content/contact'
 import { links } from '../content/links'
 import { site } from '../content/site'
@@ -41,7 +42,7 @@ export function ContactPage() {
           </section>
 
           <div className={styles.media}>
-            <ResponsiveImage image={page.image} className={styles.image} />
+            <ResponsiveImage image={page.image} sizes={imageSizes.contact} className={styles.image} />
           </div>
 
           <section className={cx(styles.block, styles.visit)} aria-labelledby={`${page.visit.id}-heading`}>
