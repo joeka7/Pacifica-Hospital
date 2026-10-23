@@ -14,7 +14,6 @@ export interface QuickLink {
 export const utilityLinks: UtilityLink[] = [
   { label: 'Pay a bill', link: links.patientBilling },
   { label: 'Careers', link: links.careers },
-  { label: 'Español', link: links.spanish, lang: 'es' },
 ]
 
 export const mainNav: LabeledLink[] = [

@@ -158,11 +158,4 @@ export const links = {
     href: `${UPLOADS}/2026/09/7-Pacifica-Hospital-notice-of-nondiscrimination-universal-taglines.pdf`,
     verified: true,
   },
-
-  // Unresolved
-  spanish: {
-    href: null,
-    verified: false,
-    note: 'No Spanish-language destination identified; renders as text',
-  },
 } satisfies Record<string, LinkTarget>

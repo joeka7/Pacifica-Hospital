@@ -10,7 +10,6 @@ export function UtilityBar() {
     <div className={styles.bar}>
       <Container className={styles.inner}>
         <p className={styles.notice}>
-          <span className={styles.marker} aria-hidden="true" />
           {utilityBar.emergencyNotice}{' '}
           <PhoneLink phone={contact.emergencyPhone} variant="onDark" className={styles.phone} />
         </p>
