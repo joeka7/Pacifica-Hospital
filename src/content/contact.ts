@@ -1,4 +1,5 @@
 import type { LinkRowItem } from './blocks'
+import { images } from './images'
 import { links } from './links'
 import { clinicContact } from './mentalHealthClinic'
 import { contact, hours, type BreadcrumbItem, type HoursRow, type PageMeta } from './site'
@@ -8,8 +9,8 @@ import { contact, hours, type BreadcrumbItem, type HoursRow, type PageMeta } fro
  *
  * The source form posts to a WordPress (WPForms) handler that this site
  * does not have. Until an approved endpoint is set in `contactForm.endpoint`,
- * the form validates the message and opens it in the visitor's email app,
- * addressed to the published inquiries address. Nothing is sent by the site.
+ * the form validates the message and then says plainly that it was not sent,
+ * pointing to the inquiries address and main line. Nothing is sent by the site.
  */
 
 export const contactPage = {
@@ -26,6 +27,7 @@ export const contactPage = {
     heading: 'If you are experiencing a medical emergency, call your physician or 911 immediately.',
     body: 'Please do not send an email in the event of an emergency.',
   },
+  image: images.contactReception,
   phones: {
     id: 'phone-numbers',
     heading: 'Phone numbers',
@@ -67,49 +69,46 @@ export const contactPage = {
 
 export const contactForm = {
   /**
-   * Approved submission endpoint. Null until one exists; the form then opens
-   * the message in the visitor's email app instead of posting it.
+   * Approved submission endpoint. Null until one exists; the form then
+   * validates the message and reports that it was not sent.
    */
   endpoint: null as string | null,
   id: 'message',
   heading: 'Send us a message',
   intro: [
-    'Complete the form below and a PHV representative will reply if a response is requested. Email messages are checked Monday through Friday.',
+    'Complete the form and a PHV representative will reply if a response is requested. Messages are checked Monday through Friday.',
     'Please be advised that we are not able to offer health information or medical advice through this service.',
   ],
+  requiredNote: 'All fields are required unless marked optional.',
   fields: {
-    firstName: 'First name',
-    lastName: 'Last name',
-    email: 'Email',
-    phone: 'Phone',
-    phoneHint: 'Optional',
-    message: 'Reason for appointment or inquiry',
+    name: 'Full name',
+    email: 'Email address',
+    phone: 'Phone number',
+    subject: 'Subject',
+    message: 'Message',
     messageHint: 'Up to 1,500 characters',
   },
-  /** Keeps the email-app link within the length mail clients accept. */
+  optional: 'Optional',
   messageMaxLength: 1500,
   submit: 'Send message',
-  emailSubmit: 'Open in email app',
-  required: 'Required',
   errorPrefix: 'Error:',
   errors: {
-    firstName: 'Enter your first name.',
-    lastName: 'Enter your last name.',
+    name: 'Enter your full name.',
     email: 'Enter your email address.',
     emailFormat: 'Enter an email address in the format name@example.com.',
     phoneFormat: 'Enter a phone number with 10 to 15 digits, or leave it blank.',
-    message: 'Enter the reason for your appointment or inquiry.',
+    subject: 'Enter a subject.',
+    message: 'Enter your message.',
   },
   email: contact.email,
   phone: contact.mainPhone,
-  emailSubject: 'Website inquiry from',
-  // Shown while there is no endpoint, above the fields.
-  handoffBefore: 'Messages are not sent from this website. “Open in email app” starts a message to ',
-  handoffMiddle: ' in your own email app for you to review and send. You can also call ',
-  handoffAfter: '.',
-  // Announced after a valid message is handed to the email app.
-  openedBefore:
-    'Your email app should now be open with your message. It is not sent until you send it from there. If nothing opened, email ',
-  openedMiddle: ' or call ',
-  openedAfter: '.',
+  // Beside the button while there is no endpoint, so no one writes a message expecting it to be sent.
+  unavailableBefore: 'Online messages are not yet connected. Until they are, email ',
+  unavailableMiddle: ' or call ',
+  unavailableAfter: '.',
+  // Announced after a valid submit while there is no endpoint.
+  notSentHeading: 'Your message has not been sent.',
+  notSentBefore: 'This form is not yet connected. Please email ',
+  notSentMiddle: ' or call ',
+  notSentAfter: '. Your message is still in the form, so you can copy it.',
 }

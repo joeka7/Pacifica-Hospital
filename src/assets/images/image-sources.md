@@ -33,21 +33,32 @@ Each photo has two WebP renditions: `<name>.webp` (large, used as `src`) and `<n
 | `ct-scanner-room` | 1600×1067 / 800×533 | `/services/imaging` | [Diagnosis Device in Hospital](https://www.pexels.com/photo/diagnosis-device-in-hospital-13176452/) | Pexels user "contact me +923323219715" |
 | `laboratory-centrifuge` | 1600×1067 / 800×533 | `/services/laboratory` | [Doctor Using a Centrifuge Machine](https://www.pexels.com/photo/doctor-using-a-centrifuge-machine-6627667/) | Kaboompics (karola-g) |
 | `pharmacy-medication-station` | 1600×1067 / 800×533 | `/services/pharmacy` | [Medical Practitioner getting Medicine from Shelf](https://www.pexels.com/photo/medical-practitioner-getting-medicine-from-shelf-6129585/) | RDNE Stock project |
+| `contact-reception-desk` | 1600×1067 / 800×533 | `/contact`: beside the phone numbers | [A Woman Talking to a Receptionist](https://www.pexels.com/photo/a-woman-talking-to-a-receptionist-4266932/) | Cedric Fauntleroy |
 
 Processing notes:
 
 - Crops are centred, with two exceptions. `skilled-nursing-walk` is a 3:2 band from the lower half of a portrait original. `careers-nursing-corridor` is cropped in slightly to remove a part-cut wall sign.
 - `emergency-treatment-area` has a mild white-balance correction that reduces the original's strong yellow cast.
+- `contact-reception-desk` (downloaded 23 October 2026) is the full 6000×4000 original resized to 3:2 with no crop; the Pexels page lists its licence as "Pexels". It stands in for the original Contact page image (see "Original Contact page image" below) and is not captioned.
 - WebP, quality 78.
 
 ## Still placeholders
 
 These stay as labelled SVG placeholders on purpose, because stock photography would misrepresent a real place or person:
 
-- `campus-exterior.svg` (Home: "Our campus") and `about-campus-wide.svg` (About hero, captioned with the hospital's name and address) need genuine photographs of the Sun Valley building. No openly licensed photo of it was found, and the images on pacificahospital.com are stock or graphics, not the facility.
+- `campus-exterior.svg` (Home: "Our campus") and `about-campus-wide.svg` (About hero, captioned with the hospital's name and address) need genuine photographs of the Sun Valley building. No openly licensed photo of it was found (Wikimedia Commons searched again on 23 October 2026). The one genuine campus photo on pacificahospital.com has no recorded licence; see below.
+
+## Original Contact page image
+
+Checked 23 October 2026. The design image on [pacificahospital.com/contact-2/](https://pacificahospital.com/contact-2/) is the Slider Revolution background `https://pacificahospital.com/wp-content/uploads/2020/10/70011.png` (layer title "700(1)(1)", lazy-loaded, so it is not in the page's plain `<img src>` list).
+
+- Downloaded and verified: PNG, 1250×757, 8-bit palette, 486,823 bytes, SHA-256 `3de83e231c8abdb77d0eb45367de6b4634313ac79b739a98b4b3589c6dcf5569`.
+- Subject: a genuine photograph of the PHV campus from the San Fernando Road side. The monument sign reads "Pacifica Hospital of the Valley" with "Emergency / Emergencia" and department directions, and the pole sign also reads "Pacifica Hospital of the Valley". Parking lot, palms and the medical office building on the left.
+- **Not used.** The photographer, ownership and licence are not recorded anywhere on the site or in the file, and a site displaying an image does not show that it holds the rights. It was replaced on `/contact` by `contact-reception-desk` (Pexels, above).
+- To use it: PHV confirms it owns the photo or holds a licence that covers this site. It is low-resolution (1250 px wide), palette-quantised and taken in harsh midday light, so a new photograph shot to the campus brief is still preferable for the Home and About placeholders.
 - `placeholder-portrait.svg` (physician profiles) needs approved headshots of the named physicians.
 
 ## Reviewed but not used
 
-- Images on pacificahospital.com (checked 21 October 2026): stock photos with no recorded licence (for example `cora.jpg`, `doctor_phv_surg2.jpg`, `pexels-photo-1881170.jpeg`), low-resolution thumbnails (`*285x190.png`, `*410x269.png`, `phvOR1.jpg` at 425×235), and a text graphic (`2460_lght.png`, "ER 24 HR"). None were reused.
+- Images on pacificahospital.com (checked 21 October 2026): stock photos with no recorded licence (for example `cora.jpg`, `doctor_phv_surg2.jpg`, `pexels-photo-1881170.jpeg`), low-resolution thumbnails (`*285x190.png`, `*410x269.png`, `phvOR1.jpg` at 425×235), and a text graphic (`2460_lght.png`, "ER 24 HR"). None were reused. The Contact page campus photo `70011.png` is covered above.
 - Unsplash and Pixabay: their search pages require an API key or a browser challenge, so they weren't used.

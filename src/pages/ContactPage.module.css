@@ -2,17 +2,14 @@
   padding-top: 64px;
 }
 
-.layout {
-  align-items: start;
-  row-gap: 56px;
+.directory {
+  padding-top: var(--section-sm);
 }
 
-.details {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
-  grid-column: 1 / span 5;
-  min-width: 0;
+/* Two rows: phone numbers beside the photo, then visit beside records. */
+.layout {
+  align-items: start;
+  row-gap: 72px;
 }
 
 .block {
@@ -20,12 +17,28 @@
   flex-direction: column;
   align-items: stretch;
   gap: 16px;
+  min-width: 0;
   padding-top: 16px;
   border-top: 1px solid var(--color-navy);
 }
 
 .block > a {
   align-self: flex-start;
+}
+
+.phones,
+.visit {
+  grid-column: 1 / span 5;
+}
+
+.media,
+.records {
+  grid-column: 7 / -1;
+  min-width: 0;
+}
+
+.image {
+  --ratio: 3 / 2;
 }
 
 .blockHeading {
@@ -45,33 +58,71 @@
   color: var(--color-text);
 }
 
-.formColumn {
+/* Closing band: the form set apart on the neutral surface. */
+.formBand {
+  margin-top: var(--space-section-xl);
+  padding-block: var(--section-sm) var(--section-md);
+  background: var(--color-surface);
+}
+
+.formIntro {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  grid-column: 7 / -1;
+  grid-column: 1 / span 4;
   min-width: 0;
   padding-top: 16px;
   border-top: 1px solid var(--color-navy);
 }
 
-.formIntro {
-  max-width: 38em;
-}
-
-.formIntro:last-of-type {
+.formIntro > h2 {
   margin-bottom: 8px;
 }
 
+.formColumn {
+  grid-column: 6 / -1;
+  min-width: 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-navy);
+}
+
 @media (max-width: 1079px) {
-  .details,
+  .phones,
+  .visit {
+    grid-column: 1 / span 6;
+  }
+
+  .formIntro,
   .formColumn {
     grid-column: 1 / -1;
+  }
+
+  .formIntro {
+    max-width: 40em;
+  }
+
+  .formColumn {
+    margin-top: 40px;
   }
 }
 
 @media (max-width: 767px) {
   .noticeWrap {
     padding-top: 40px;
+  }
+
+  .layout {
+    row-gap: 48px;
+  }
+
+  .phones,
+  .visit,
+  .media,
+  .records {
+    grid-column: 1 / -1;
+  }
+
+  .formColumn {
+    margin-top: 32px;
   }
 }

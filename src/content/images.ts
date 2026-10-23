@@ -10,6 +10,8 @@ import behavioralHealthLounge800 from '../assets/images/behavioral-health-lounge
 import campusExterior from '../assets/images/campus-exterior.svg'
 import careersNursingCorridor from '../assets/images/careers-nursing-corridor.webp'
 import careersNursingCorridor720 from '../assets/images/careers-nursing-corridor-720.webp'
+import contactReceptionDesk from '../assets/images/contact-reception-desk.webp'
+import contactReceptionDesk800 from '../assets/images/contact-reception-desk-800.webp'
 import ctScannerRoom from '../assets/images/ct-scanner-room.webp'
 import ctScannerRoom800 from '../assets/images/ct-scanner-room-800.webp'
 import emergencyTreatmentArea from '../assets/images/emergency-treatment-area.webp'
@@ -60,6 +62,8 @@ export interface SiteImage {
 const COLUMN_SIZES = '(max-width: 1079px) 100vw, min(58vw, 880px)'
 const HERO_SIZES = '(max-width: 899px) 100vw, min(62vw, 920px)'
 const HALF_SIZES = '(max-width: 1079px) 100vw, 50vw'
+// Contact page photo: half width until the grid stacks at 767px.
+const CONTACT_SIZES = '(max-width: 767px) 100vw, 50vw'
 
 interface StockPhoto {
   src: string
@@ -157,6 +161,20 @@ export const images = {
     'https://www.pexels.com/photo/doctor-and-nurses-talking-6129436/',
     'A nurse, physician and case manager confer at a nurses’ station. Real staff, mid-conversation, natural light, engaged with each other rather than the camera.',
   ),
+
+  // Contact page: 3:2 beside the phone numbers, in the same columns as the form.
+  contactReception: stockPhoto({
+    src: contactReceptionDesk,
+    small: contactReceptionDesk800,
+    smallWidth: 800,
+    width: 1600,
+    height: 1067,
+    sizes: CONTACT_SIZES,
+    alt: 'A staff member in scrubs, holding a tablet, talks with a visitor across a front desk',
+    source: 'https://www.pexels.com/photo/a-woman-talking-to-a-receptionist-4266932/',
+    brief:
+      'The PHV main entrance registration desk with a staff member helping a visitor. Natural light, eye level, visitor seen from the side or behind.',
+  }),
 } satisfies Record<string, SiteImage>
 
 // Service pages. No patient faces; real PHV spaces and staff only once shot.

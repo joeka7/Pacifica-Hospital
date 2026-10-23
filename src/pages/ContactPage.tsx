@@ -7,6 +7,7 @@ import { HoursList } from '../components/EmergencyInfo/HoursList'
 import { InteriorPage } from '../components/InteriorPage/InteriorPage'
 import { LinkRowList } from '../components/LinkRowList/LinkRowList'
 import { PageIntro } from '../components/PageIntro/PageIntro'
+import { ResponsiveImage } from '../components/ResponsiveImage/ResponsiveImage'
 import { contactForm, contactPage } from '../content/contact'
 import { links } from '../content/links'
 import { site } from '../content/site'
@@ -18,7 +19,7 @@ export function ContactPage() {
   const { address } = page.visit
 
   return (
-    <InteriorPage meta={page.meta} currentPath={links.contact.href} breadcrumb={page.breadcrumb} padEnd>
+    <InteriorPage meta={page.meta} currentPath={links.contact.href} breadcrumb={page.breadcrumb}>
       <PageIntro headingId="contact-heading" eyebrow={page.eyebrow} heading={page.heading} lead={<p>{page.lead}</p>} />
 
       <div className={styles.noticeWrap}>
@@ -29,53 +30,61 @@ export function ContactPage() {
         </Container>
       </div>
 
-      <div className={shared.section}>
+      <div className={styles.directory}>
         <Container className={cx(shared.grid, styles.layout)}>
-          <div className={styles.details}>
-            <section className={styles.block} aria-labelledby={`${page.phones.id}-heading`}>
-              <h2 id={`${page.phones.id}-heading`} className={styles.blockHeading}>
-                {page.phones.heading}
-              </h2>
-              <HoursList rows={page.phones.rows} />
-              <p className={styles.note}>{page.phones.note}</p>
-            </section>
+          <section className={cx(styles.block, styles.phones)} aria-labelledby={`${page.phones.id}-heading`}>
+            <h2 id={`${page.phones.id}-heading`} className={styles.blockHeading}>
+              {page.phones.heading}
+            </h2>
+            <HoursList rows={page.phones.rows} />
+            <p className={styles.note}>{page.phones.note}</p>
+          </section>
 
-            <section className={styles.block} aria-labelledby={`${page.visit.id}-heading`}>
-              <h2 id={`${page.visit.id}-heading`} className={styles.blockHeading}>
-                {page.visit.heading}
-              </h2>
-              <address className={styles.address}>
-                {site.name}
-                <br />
-                {address.street}
-                <br />
-                {address.city}, {address.state} {address.zip}
-              </address>
-              <ArrowLink href={page.visit.directions.link.href}>{page.visit.directions.label}</ArrowLink>
-              <HoursList rows={page.visit.rows} />
-            </section>
-
-            <section className={styles.block} aria-labelledby={`${page.records.id}-heading`}>
-              <h2 id={`${page.records.id}-heading`} className={styles.blockHeading}>
-                {page.records.heading}
-              </h2>
-              <LinkRowList items={page.records.items} />
-            </section>
+          <div className={styles.media}>
+            <ResponsiveImage image={page.image} className={styles.image} />
           </div>
 
-          <section className={styles.formColumn} aria-labelledby={`${contactForm.id}-heading`}>
+          <section className={cx(styles.block, styles.visit)} aria-labelledby={`${page.visit.id}-heading`}>
+            <h2 id={`${page.visit.id}-heading`} className={styles.blockHeading}>
+              {page.visit.heading}
+            </h2>
+            <address className={styles.address}>
+              {site.name}
+              <br />
+              {address.street}
+              <br />
+              {address.city}, {address.state} {address.zip}
+            </address>
+            <ArrowLink href={page.visit.directions.link.href}>{page.visit.directions.label}</ArrowLink>
+            <HoursList rows={page.visit.rows} />
+          </section>
+
+          <section className={cx(styles.block, styles.records)} aria-labelledby={`${page.records.id}-heading`}>
+            <h2 id={`${page.records.id}-heading`} className={styles.blockHeading}>
+              {page.records.heading}
+            </h2>
+            <LinkRowList items={page.records.items} />
+          </section>
+        </Container>
+      </div>
+
+      <section className={styles.formBand} aria-labelledby={`${contactForm.id}-heading`}>
+        <Container className={shared.grid}>
+          <div className={styles.formIntro}>
             <h2 id={`${contactForm.id}-heading`} className={shared.headingMd}>
               {contactForm.heading}
             </h2>
             {contactForm.intro.map((paragraph) => (
-              <p key={paragraph} className={cx(shared.body, styles.formIntro)}>
+              <p key={paragraph} className={shared.body}>
                 {paragraph}
               </p>
             ))}
+          </div>
+          <div className={styles.formColumn}>
             <ContactForm />
-          </section>
+          </div>
         </Container>
-      </div>
+      </section>
     </InteriorPage>
   )
 }
