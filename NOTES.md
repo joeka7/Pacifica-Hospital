@@ -17,7 +17,7 @@ Items to confirm with PHV before launch. Code locations are noted so each can be
 
 The hero, mental health and careers images are now licensed Pexels stock photos (entries with a `stockSource` in `src/content/images.ts`; credits and licence in `src/assets/images/image-sources.md`). They are interim: replace them with on-site photography shot to each entry's `brief`, update `alt` text, and remove `stockSource`. They show no PHV staff or spaces, so don't caption them as PHV.
 
-The campus image is still a labeled placeholder (`isPlaceholder: true`). It needs a real photograph of the PHV building (early morning light, real signage visible). Stock would misrepresent the facility.
+The Home "Our campus" image is `Gary+Pacifica+Pic+3.webp`, a genuine photo of the PHV sign and building. Its source and licence aren't recorded; see `src/assets/images/image-sources.md`.
 
 # About page: open verification items
 

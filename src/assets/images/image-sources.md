@@ -46,7 +46,8 @@ Processing notes:
 
 These stay as labelled SVG placeholders on purpose, because stock photography would misrepresent a real place or person:
 
-- `campus-exterior.svg` (Home: "Our campus") and `about-campus-wide.svg` (About hero, captioned with the hospital's name and address) need genuine photographs of the Sun Valley building. No openly licensed photo of it was found (Wikimedia Commons searched again on 23 October 2026). The one genuine campus photo on pacificahospital.com has no recorded licence; see below.
+- `about-campus-wide.svg` (About hero, captioned with the hospital's name and address) needs a genuine photograph of the Sun Valley building. No openly licensed photo of it was found (Wikimedia Commons searched again on 23 October 2026). The one genuine campus photo on pacificahospital.com has no recorded licence; see below.
+- `campus-exterior.svg` is no longer used. Home "Our campus" now shows `Gary+Pacifica+Pic+3.webp` (1500×793, added to the project 23 October 2026): the PHV monument sign on San Fernando Road with the hospital building behind. Its photographer and licence are not recorded here; confirm PHV owns it or holds a licence that covers this site.
 
 ## Original Contact page image
 

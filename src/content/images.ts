@@ -7,7 +7,7 @@ import acuteCareChartReview from '../assets/images/acute-care-chart-review.webp'
 import acuteCareChartReview800 from '../assets/images/acute-care-chart-review-800.webp'
 import behavioralHealthLounge from '../assets/images/behavioral-health-lounge.webp'
 import behavioralHealthLounge800 from '../assets/images/behavioral-health-lounge-800.webp'
-import campusExterior from '../assets/images/campus-exterior.svg'
+import campusSignage from '../assets/images/Gary+Pacifica+Pic+3.webp'
 import careersNursingCorridor from '../assets/images/careers-nursing-corridor.webp'
 import careersNursingCorridor720 from '../assets/images/careers-nursing-corridor-720.webp'
 import contactReceptionDesk from '../assets/images/contact-reception-desk.webp'
@@ -114,11 +114,11 @@ export const images = {
       'A PHV nurse talks with an older patient at the bedside. Window light, eye level, natural, no stock posing.',
   }),
   campus: {
-    src: campusExterior,
-    width: 2100,
-    height: 800,
-    alt: 'Placeholder image: exterior of the hospital building',
-    isPlaceholder: true,
+    src: campusSignage,
+    width: 1500,
+    height: 793,
+    alt: 'The Pacifica Hospital of the Valley sign on San Fernando Road, pointing to 24-hour emergency care, with the hospital building behind it',
+    isPlaceholder: false,
     brief: 'The PHV building in early morning light, wide and level, real signage visible.',
   },
   mentalHealth: portraitPhoto(
