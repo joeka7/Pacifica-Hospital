@@ -110,8 +110,8 @@ export const emergencyPage = {
       {
         type: 'linkParagraph',
         text: 'If you don’t have a primary care physician, we are here to help you find one.',
-        linkLabel: 'Find a physician',
-        link: links.physicians,
+        linkLabel: 'Contact us',
+        link: links.contact,
       },
     ] satisfies ContentBlock[],
   },
@@ -331,7 +331,7 @@ export const emergencyPage = {
 
   team: {
     id: 'care-team',
-    heading: 'Emergency physicians',
+    heading: 'Emergency care team',
     text: 'Care is provided by a team of experienced emergency physicians and our 24-hour Medical Surgical Unit, providing immediate, walk-in treatment of medical and surgical emergencies.',
   },
 

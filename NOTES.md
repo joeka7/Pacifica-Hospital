@@ -51,7 +51,8 @@ The About page (`/about`) lives in `src/pages/AboutPage.tsx`; all of its copy is
 
 - Routing is a small path table in `src/router.tsx` (no router dependency). Trailing slashes are ignored; unknown paths render a "Page not found" page (previously they fell back to the homepage).
 - The Vite dev and preview servers already fall back to `index.html`. **Production hosting needs an SPA fallback** (rewrite every route to `/index.html`) or prerendered pages, otherwise deep links return 404.
-- **Redirects from the old site**: `src/content/redirects.ts` maps old pacificahospital.com paths (including `/doctors/<name>/` profiles) to the new pages. The app applies them in the browser; configure the same list as server-side 301s at launch.
+- **Redirects from the old site**: `src/content/redirects.ts` maps old pacificahospital.com paths to the new pages. The app applies them in the browser; configure the same list as server-side 301s at launch.
+- **Retired physician paths**: the site has no physician directory (see "Physician directory" below). `retiredRedirect` in `src/content/redirects.ts` sends `/physicians`, `/doctors`, `/specialists`, `/hospitalists`, `/staff-officers`, `/hospital-committee` and every path beneath them to `/contact`. Configure the same prefixes as server-side 301s at launch.
 - Page title and meta description are set client-side by `useDocumentMeta`. Crawlers that don't run JavaScript will see the homepage values from `index.html` unless pages are prerendered.
 
 # Interior pages: open verification items
@@ -68,9 +69,6 @@ All copy is in `src/content/` (one file per page or area); page layouts are in `
 | `/services/imaging`, `/services/laboratory`, `/services/pharmacy` | unit descriptions merged with /services/medical-imaging-nuclear-medicine/, /services/laboratory-servives/, /services/pharmacy-department/ |
 | `/emergency` | /emergency-department-menu-main/ and /services/emergency-servives/ (merged) |
 | `/mental-health-clinic` | /pacific-hospital-of-the-valley-urgent-care-clinic/ |
-| `/physicians` (tabs: `?group=hospitalists`, `?group=specialists`) | /specialists/, /hospitalists/ |
-| `/physicians/leadership` | /staff-officers/, /hospital-committee/ |
-| `/physicians/<name>` (38 profiles) | /doctors/<name>/ |
 | `/patients` | /patient-info/, /patients-and-visitors_/ and the shared contact block |
 | `/patients/billing`, `/patients/financial-assistance` | /patient-billing/, /help-paying-your-bill/ |
 | `/contact` | /contact-2/ |
@@ -84,21 +82,17 @@ All copy is in `src/content/` (one file per page or area); page layouts are in `
 - /covid-19-response-plan/, /patient-satisfaction-survey/ (Spanish survey form), /pacifica-pricing/ (download links are mislabeled and one is broken), /imaging-services/, /lab-services/, /departments/*, /features/*, blog posts: not linked from the site's navigation, outdated, or duplicates.
 - /ceo-president-precious-mays-2/: not linked from navigation and contains award and performance claims. **Decide** whether to publish a leadership biography.
 - /senior-leadership/: returns 404 on the source.
+- /specialists/, /hospitalists/, /staff-officers/, /hospital-committee/ and /doctors/<name>/: physician directory, retired by decision (see "Physician directory" below).
 
 ## Navigation decisions
 
-1. **No dropdown menus.** The source header has dropdowns; the approved header is a flat list, so it is unchanged. Sub-pages are reached from the landing pages (`/services`, `/patients`, `/physicians`). Confirm, or approve adding dropdowns to the header.
-2. **Contact is in the header, mobile menu and footer.** The source nav ends with "Contact"; it is now the last item of the flat header list (and so the mobile menu) and sits under "About Pacifica Hospital" in the footer "About" column. It is still also reached from the hero ("Plan your visit"), About, Patients and the closing sections.
+1. **No dropdown menus.** The source header has dropdowns; the approved header is a flat list, so it is unchanged. Sub-pages are reached from the landing pages (`/services`, `/patients`). Confirm, or approve adding dropdowns to the header.
+2. **Home and Contact in the header.** The flat list starts with "Home" and ends with "About us". "Contact" is the header button (desktop) and the full-width button below the list (mobile menu), replacing "Find a physician"; it is not repeated in the list. It also sits under "About Pacifica Hospital" in the footer "About" column, and is reached from the hero ("Plan your visit"), About, Patients and the closing sections.
 3. **Footer** labels are unchanged; "HIPAA privacy" and "Legal terms" now go to `/privacy` and `/legal`.
 
-## Physicians (`src/content/physicians.ts`)
+## Physician directory
 
-1. **Omitted boilerplate**: almost every source profile shows "Degrees: M.D. of Medicine" and "Areas of Expertise: Adolescent Health, Immunology, Internal Medicine", including podiatrists (DPM) and a dentist (D.D.S.). This is theme filler and is not shown. Supply real degrees and areas of expertise if they should appear.
-2. **No biographies** exist on the source; profiles show only specialty, leadership role, years in practice (9 physicians) and committees (8 physicians). Confirm years in practice are current.
-3. **Name spellings to confirm** (source name vs source URL): Farough vs "faroukh" Kerendi; Clifford Iriele vs "irele"; Zinovy vs "zivovy" Lekht. The site uses the displayed names.
-4. **Specialty labels**: Dr. Sani is listed as "Pulmonology"; three others as "Pulmonary Diseases". Dr. Rubaum is "Otolaryngology" and "Department Head of Surgery". Confirm.
-5. **Portraits**: profiles use a portrait placeholder. The source has headshots for 9 physicians (the rest use stock images); obtain approved, high-resolution files before using them.
-6. **Appointments**: no booking or availability is shown. The finder offers the source's assistance line: (818) 767-3310, Monday to Friday, 8 AM to 5 PM (PST).
+Retired by scope decision: the site covers the hospital, its departments, services, facilities, patient resources and contact information, not individual physicians. There is no physician finder, no profile pages, no medical staff leadership page and no named physician on any page. Former paths redirect to `/contact` (see "Hosting"). General references to physicians, hospitalists and care teams in service and About copy are kept. Do not add named physicians or headshots without a new scope decision.
 
 ## Content conflicts and omitted claims
 
@@ -129,7 +123,7 @@ The Contact page photo is interim stock (`contactReception` in `src/content/imag
 
 ## New microcopy needing sign-off
 
-Page headings and leads not taken from the source, including: "Care for every stage of a hospital stay." (Services), "Questions about your care?" (service closings), "Patients and visitors." and its lead, "Policies and notices." and its lead (Legal), "A place for your career." (Careers), "Directions to the Emergency Department.", "We’re here to help you improve along your healing journey." (adapted from the clinic page), the service directory group names and one-line service summaries, "Related physicians" and "Related services" headings, and the contact form's unavailable note.
+Page headings and leads not taken from the source, including: "Care for every stage of a hospital stay." (Services), "Questions about your care?" (service closings), "Patients and visitors." and its lead, "Policies and notices." and its lead (Legal), "A place for your career." (Careers), "Directions to the Emergency Department.", "We’re here to help you improve along your healing journey." (adapted from the clinic page), the service directory group names and one-line service summaries, the "Related services" heading, "Emergency care team" (Emergency), and the contact form's unavailable note.
 
 ## External links
 
@@ -138,5 +132,4 @@ The site links to official PHV documents (PDFs on pacificahospital.com), the Hea
 ## Photography
 
 - `serviceImages` (11 service pages and the Emergency Department) are interim Pexels stock photos chosen to match each service. Shot briefs for the on-site replacements stay in `src/content/images.ts`. The Emergency Department image is a generic treatment area, not an entrance, so it doesn't pass for PHV's own ED.
-- `physicianPortrait()` is still a placeholder for every profile. Don't substitute stock portraits for named physicians; obtain approved headshots.
 - The Mental Health Clinic and Careers pages reuse the homepage mental health and careers photos.

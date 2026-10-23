@@ -87,14 +87,6 @@ export const patientsPage = {
       ],
     },
     {
-      id: 'physicians',
-      heading: 'Physicians',
-      items: [
-        { title: 'Find a physician', description: 'Search by name or specialty', link: links.physicians },
-        { title: 'Medical staff leadership', description: 'Officers, department heads and committees', link: links.medicalLeadership },
-      ],
-    },
-    {
       id: 'questions',
       heading: 'Questions',
       items: [

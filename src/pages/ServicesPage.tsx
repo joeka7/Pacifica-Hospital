@@ -111,8 +111,7 @@ export function ServicesPage() {
         headingId="services-closing-heading"
         heading={servicePageCopy.closing.heading}
         body={servicePageCopy.closing.body}
-        primaryAction={{ label: 'Find a physician', link: links.physicians }}
-        secondaryAction={{ label: 'Contact us', link: links.contact }}
+        primaryAction={{ label: 'Contact us', link: links.contact }}
         contacts={hospitalContacts}
       />
     </InteriorPage>

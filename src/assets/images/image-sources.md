@@ -56,7 +56,6 @@ Checked 23 October 2026. The design image on [pacificahospital.com/contact-2/](h
 - Subject: a genuine photograph of the PHV campus from the San Fernando Road side. The monument sign reads "Pacifica Hospital of the Valley" with "Emergency / Emergencia" and department directions, and the pole sign also reads "Pacifica Hospital of the Valley". Parking lot, palms and the medical office building on the left.
 - **Not used.** The photographer, ownership and licence are not recorded anywhere on the site or in the file, and a site displaying an image does not show that it holds the rights. It was replaced on `/contact` by `contact-reception-desk` (Pexels, above).
 - To use it: PHV confirms it owns the photo or holds a licence that covers this site. It is low-resolution (1250 px wide), palette-quantised and taken in harsh midday light, so a new photograph shot to the campus brief is still preferable for the Home and About placeholders.
-- `placeholder-portrait.svg` (physician profiles) needs approved headshots of the named physicians.
 
 ## Reviewed but not used
 

@@ -39,8 +39,6 @@ export interface ServicePageData {
   /** Key facts beside the image: settings, hours, phone. */
   glance: HoursRow[]
   sections: ContentSectionData[]
-  /** Physician specialties to cross-link, exactly as named in physicians.ts. */
-  physicianSpecialties?: string[]
   related: string[]
 }
 
@@ -88,16 +86,9 @@ export const servicePages: ServicePageData[] = [
               'Coordinating care between the hospital, primary care physicians and specialists',
             ],
           },
-          {
-            type: 'linkParagraph',
-            text: 'Hospitalists on our medical staff are listed in the physician finder.',
-            linkLabel: 'Meet our hospitalists',
-            link: links.hospitalists,
-          },
         ],
       },
     ],
-    physicianSpecialties: ['Internal Medicine'],
     related: ['intensive-care', 'medical-surgical', 'respiratory-therapy'],
   },
   {
@@ -274,7 +265,6 @@ export const servicePages: ServicePageData[] = [
         ],
       },
     ],
-    physicianSpecialties: ['Psychiatry'],
     related: ['acute-care', 'intensive-care', 'rehabilitation'],
   },
   {
@@ -363,7 +353,6 @@ export const servicePages: ServicePageData[] = [
         ],
       },
     ],
-    physicianSpecialties: ['Pulmonary Diseases', 'Pulmonology'],
     related: ['skilled-nursing', 'respiratory-therapy', 'rehabilitation'],
   },
   {
@@ -596,7 +585,6 @@ export const servicePages: ServicePageData[] = [
         ],
       },
     ],
-    physicianSpecialties: ['Pulmonary Diseases', 'Pulmonology'],
     related: ['subacute', 'intensive-care', 'rehabilitation'],
   },
   {
@@ -654,7 +642,6 @@ export const servicePages: ServicePageData[] = [
         ],
       },
     ],
-    physicianSpecialties: ['Radiology', 'Tele-Radiology'],
     related: ['laboratory', 'pharmacy', 'acute-care'],
   },
   {
@@ -940,7 +927,6 @@ export const servicePageCopy = {
   eyebrow: 'Services',
   glanceHeading: 'At a glance',
   relatedHeading: 'Related services',
-  physiciansHeading: 'Related physicians',
   closing: {
     heading: 'Questions about your care?',
     body: 'Call our main line or send us a message. In a medical emergency, call 911.',

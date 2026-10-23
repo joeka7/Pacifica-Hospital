@@ -8,14 +8,12 @@ import { LinkRowList } from '../components/LinkRowList/LinkRowList'
 import { PageClosing } from '../components/PageClosing/PageClosing'
 import { PageIntro } from '../components/PageIntro/PageIntro'
 import { PhoneLink } from '../components/PhoneLink/PhoneLink'
-import { PhysicianRowList } from '../components/PhysicianRow/PhysicianRow'
 import { ResponsiveImage } from '../components/ResponsiveImage/ResponsiveImage'
 import { RichText } from '../components/RichText/RichText'
 import { RuledList } from '../components/RuledList/RuledList'
 import { StepList } from '../components/StepList/StepList'
 import { emergencyPage } from '../content/emergency'
 import { links, servicePath } from '../content/links'
-import { physicians } from '../content/physicians'
 import { findServicePage, type ServicePageData } from '../content/servicePages'
 import { cx } from '../utils/cx'
 import styles from './EmergencyPage.module.css'
@@ -25,7 +23,6 @@ export function EmergencyPage() {
   const related = page.related.slugs
     .map((slug) => findServicePage(slug))
     .filter((item): item is ServicePageData => item !== undefined)
-  const emergencyPhysicians = physicians.filter((physician) => physician.specialty === 'Emergency Medicine')
 
   return (
     <InteriorPage meta={page.meta} currentPath={links.emergencyDepartment.href} breadcrumb={page.breadcrumb}>
@@ -116,7 +113,6 @@ export function EmergencyPage() {
             </ContentSection>
             <ContentSection id={page.team.id} heading={page.team.heading}>
               <p className={cx(shared.body, styles.teamText)}>{page.team.text}</p>
-              <PhysicianRowList physicians={emergencyPhysicians} />
             </ContentSection>
             <ContentSection id="related" heading={page.related.heading}>
               <LinkRowList

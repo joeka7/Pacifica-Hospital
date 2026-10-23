@@ -24,11 +24,6 @@ export function servicePath(slug: string): string {
   return `/services/${slug}`
 }
 
-/** Path of an individual physician profile. */
-export function physicianPath(slug: string): string {
-  return `/physicians/${slug}`
-}
-
 /** Internal pages always resolve, so href stays a plain string. */
 function internal(href: string) {
   return { href, verified: true, note: INTERNAL }
@@ -57,12 +52,6 @@ export const links = {
   pharmacy: internal(servicePath('pharmacy')),
   /** The "Additional care" group (imaging, lab, pharmacy) on the services page. */
   additionalCare: internal('/services#tests-and-pharmacy'),
-
-  // Physicians
-  physicians: internal('/physicians'),
-  hospitalists: internal('/physicians?group=hospitalists'),
-  specialists: internal('/physicians?group=specialists'),
-  medicalLeadership: internal('/physicians/leadership'),
 
   // Patients and visitors
   patientResourcesNav: internal('/patients'),

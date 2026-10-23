@@ -1,5 +1,4 @@
-import { links, physicianPath } from './links'
-import { physicians } from './physicians'
+import { links } from './links'
 
 /*
  * Old pacificahospital.com paths and their pages on this site. App applies
@@ -18,17 +17,22 @@ export const legacyRedirects: Record<string, string> = {
   '/services/laboratory-servives': links.laboratory.href,
   '/services/pharmacy-department': links.pharmacy.href,
   '/services/hospital-careers': links.careers.href,
-  '/specialists': links.specialists.href,
-  '/hospitalists': links.hospitalists.href,
-  '/staff-officers': links.medicalLeadership.href,
-  '/hospital-committee': links.medicalLeadership.href,
   '/patient-info': links.patientResourcesNav.href,
   '/patients-and-visitors_': links.patientResourcesNav.href,
   '/patient-billing': links.patientBilling.href,
   '/help-paying-your-bill': links.helpPaying.href,
   '/contact-2': links.contact.href,
   '/hipaa-privacy-policy': links.hipaa.href,
-  ...Object.fromEntries(
-    physicians.map((physician) => [`/doctors/${physician.sourceSlug}`, physicianPath(physician.slug)]),
-  ),
+}
+
+/*
+ * The site has no physician directory. Its former paths, and the old site's
+ * physician pages, go to Contact, where the main line can help.
+ */
+const retiredPaths = ['/physicians', '/doctors', '/specialists', '/hospitalists', '/staff-officers', '/hospital-committee']
+
+/** Destination for a retired path or any path beneath one; undefined otherwise. */
+export function retiredRedirect(path: string): string | undefined {
+  const retired = retiredPaths.some((prefix) => path === prefix || path.startsWith(`${prefix}/`))
+  return retired ? links.contact.href : undefined
 }

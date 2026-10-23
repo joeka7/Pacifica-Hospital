@@ -17,18 +17,18 @@ export const utilityLinks: UtilityLink[] = [
 ]
 
 export const mainNav: LabeledLink[] = [
+  { label: 'Home', link: links.home },
   { label: 'Get care', link: links.allServices },
   { label: 'Additional care', link: links.additionalCare },
   { label: 'Mental health', link: links.mentalHealthClinic },
   { label: 'Patient resources', link: links.patientResourcesNav },
-  { label: 'About', link: links.aboutPage },
-  { label: 'Contact', link: links.contact },
+  { label: 'About us', link: links.aboutPage },
 ]
 
-export const headerCta: LabeledLink = { label: 'Find a physician', link: links.physicians }
+/** Header action after the main nav; Contact lives here rather than in the list. */
+export const headerCta: LabeledLink = { label: 'Contact', link: links.contact }
 
 export const quickLinks: QuickLink[] = [
-  { title: 'Find a physician', description: 'Hospitalists, specialists', link: links.physicians },
   { title: 'Visiting hours', description: hours.visiting, link: links.contact },
   { title: 'Pay a bill', description: 'Billing and financial help', link: links.patientBilling },
   { title: 'Price transparency', description: 'Standard charges', link: links.priceTransparency },

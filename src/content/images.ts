@@ -28,7 +28,6 @@ import operatingRoom from '../assets/images/operating-room.webp'
 import operatingRoom800 from '../assets/images/operating-room-800.webp'
 import pharmacyMedicationStation from '../assets/images/pharmacy-medication-station.webp'
 import pharmacyMedicationStation800 from '../assets/images/pharmacy-medication-station-800.webp'
-import placeholderPortrait from '../assets/images/placeholder-portrait.svg'
 import rehabilitationBalanceTherapy from '../assets/images/rehabilitation-balance-therapy.webp'
 import rehabilitationBalanceTherapy800 from '../assets/images/rehabilitation-balance-therapy-800.webp'
 import respiratoryNebulizer from '../assets/images/respiratory-nebulizer.webp'
@@ -264,15 +263,3 @@ export const serviceImages = {
     'A pharmacist checks a medication order at the inpatient pharmacy counter. Labels unreadable.',
   ),
 } satisfies Record<string, SiteImage>
-
-/** Portrait placeholder for physician profiles until approved headshots are supplied. */
-export function physicianPortrait(name: string): SiteImage {
-  return {
-    src: placeholderPortrait,
-    width: 1200,
-    height: 1500,
-    alt: `Placeholder image: portrait of ${name}`,
-    isPlaceholder: true,
-    brief: `Approved headshot of ${name}: plain light background, natural light, head and shoulders.`,
-  }
-}

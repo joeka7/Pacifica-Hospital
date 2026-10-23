@@ -70,8 +70,6 @@ export const hours = {
   emergency: 'Open 24 hours',
   visiting: '11:00 AM – 7:00 PM',
   business: '9:30 AM – 6:30 PM',
-  /** Phone help choosing a physician, on the main line. */
-  physicianAssistance: 'Monday to Friday, 8:00 AM – 5:00 PM (PST)',
   /** Financial assistance questions, on the business office line. */
   financialAssistance: 'Monday to Friday, 8:00 AM – 4:00 PM',
 }
@@ -165,7 +163,7 @@ export const notFoundPage = {
   links: [
     { title: 'Home', description: site.name, link: links.home },
     { title: 'Services', description: 'Inpatient, outpatient and emergency care', link: links.allServices },
-    { title: 'Find a physician', description: 'Search by name or specialty', link: links.physicians },
+    { title: 'About us', description: 'Our mission, values and campus', link: links.aboutPage },
     { title: 'Contact us', description: 'Phone numbers and directions', link: links.contact },
   ],
 }
