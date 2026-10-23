@@ -88,7 +88,7 @@ All copy is in `src/content/` (one file per page or area); page layouts are in `
 ## Navigation decisions
 
 1. **No dropdown menus.** The source header has dropdowns; the approved header is a flat list, so it is unchanged. Sub-pages are reached from the landing pages (`/services`, `/patients`, `/physicians`). Confirm, or approve adding dropdowns to the header.
-2. **No "Contact" link in the header or footer.** Contact is reached from the hero ("Plan your visit"), About, Patients and every closing section. Consider adding it to the footer "About" column.
+2. **Contact is in the header, mobile menu and footer.** The source nav ends with "Contact"; it is now the last item of the flat header list (and so the mobile menu) and sits under "About Pacifica Hospital" in the footer "About" column. It is still also reached from the hero ("Plan your visit"), About, Patients and the closing sections.
 3. **Footer** labels are unchanged; "HIPAA privacy" and "Legal terms" now go to `/privacy` and `/legal`.
 
 ## Physicians (`src/content/physicians.ts`)
@@ -123,7 +123,7 @@ All copy is in `src/content/` (one file per page or area); page layouts are in `
 
 ## Contact form (`src/content/contact.ts`)
 
-The source form posts to a WordPress handler this site does not have. The form has the same fields (first name, last name, phone, email, reason for inquiry) but stays disabled, with a note directing people to email and phone, until `contactForm.endpoint` is set. Decide: the submission endpoint, required fields (currently first name, last name, email and message), spam protection, and the confirmation message. No submission behavior has been invented.
+The source form posts to a WordPress handler this site does not have. The form has the same fields (first name, last name, phone, email, reason for inquiry) and validates them in the browser (first name, last name, email and message required; email format; phone optional, 10–15 digits). **It does not send anything.** While `contactForm.endpoint` is null, a valid form opens a pre-filled message to info@pacificahospital.com in the visitor's own email app ("Open in email app"); the page says the message is only sent from there and gives the main line as a fallback. Messages are capped at 1,500 characters to keep the mailto: link within mail-client limits. Setting `contactForm.endpoint` switches the form to a normal POST with a "Send message" button. Decide: the submission endpoint, spam protection, the confirmation page, and whether the email-app handoff is acceptable until then. Validation errors use navy, not red, because red is reserved for emergency care; confirm.
 
 ## New microcopy needing sign-off
 
