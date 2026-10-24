@@ -2,33 +2,14 @@ import { serviceImages, type SiteImage } from './images'
 import { links, type LinkTarget } from './links'
 import type { LabeledLink } from './site'
 
-export interface ServicePhoto {
-  image: SiteImage
-  /**
-   * Vertical crop position, as a percentage from the top. The 16:9 tablet
-   * box crops a 3:2 photo top and bottom only, so this keeps the subject in frame.
-   */
-  cropY: number
-}
-
-export interface ServiceItem {
+export interface FeaturedService {
   title: string
   description: string
   link: LinkTarget
-  /**
-   * Photo above the title, part of the same link. On the home directory it
-   * shows for a group's first service, and for every service in the mobile
-   * carousel. Null marks a service with no suitable photo yet: it is shown
-   * as text only.
-   */
-  photo: ServicePhoto | null
-}
-
-export interface ServiceGroupData {
-  heading: string
+  /** Shown 3:2, the photos' own shape, so nothing is cropped. */
+  image: SiteImage
   /** "emergency" draws the red top rule; reserved for emergency care. */
   tone: 'emergency' | 'standard'
-  items: ServiceItem[]
 }
 
 export const servicesSection = {
@@ -36,105 +17,39 @@ export const servicesSection = {
   allServices: { label: 'See all services', link: links.allServices } satisfies LabeledLink,
 }
 
-export const serviceGroups: ServiceGroupData[] = [
+/**
+ * The four services featured on the home page. Every service is listed on
+ * /services (servicesDirectory in servicePages.ts); the descriptions are the
+ * summaries used there and on each service page.
+ */
+export const featuredServices: FeaturedService[] = [
   {
-    heading: 'Emergency and urgent care',
+    title: 'Emergency Services',
+    description: 'Open 24 hours for medical emergencies',
+    link: links.emergencyDepartment,
+    image: serviceImages.emergency,
     tone: 'emergency',
-    items: [
-      {
-        title: 'Emergency Department',
-        description: 'Open 24 hours',
-        link: links.emergencyDepartment,
-        photo: { image: serviceImages.emergency, cropY: 70 },
-      },
-      {
-        title: 'Mental Health Urgent Care Clinic',
-        description: 'Crisis support around the clock',
-        link: links.mentalHealthClinic,
-        // Text only: the clinic's only photo is the Mental Health feature directly below.
-        photo: null,
-      },
-    ],
   },
   {
-    heading: 'Hospital stays',
+    title: 'Imaging',
+    description: 'MRI, CT, ultrasound, X-ray and more',
+    link: links.imaging,
+    image: serviceImages.imaging,
     tone: 'standard',
-    items: [
-      {
-        title: 'Acute care',
-        description: 'Diagnosis and treatment, 231 beds',
-        link: links.acuteCare,
-        photo: { image: serviceImages.acuteCare, cropY: 15 },
-      },
-      {
-        title: 'Surgery',
-        description: 'Inpatient and outpatient',
-        link: links.surgery,
-        photo: { image: serviceImages.medicalSurgical, cropY: 55 },
-      },
-      {
-        title: 'Inpatient treatments',
-        description: 'Care during your stay',
-        link: links.inpatient,
-        // A prepared patient room; the ICU is one of the inpatient units.
-        photo: { image: serviceImages.intensiveCare, cropY: 70 },
-      },
-    ],
   },
   {
-    heading: 'Recovery',
+    title: 'Laboratory',
+    description: 'Tests ordered by your doctor, walk-ins welcome',
+    link: links.laboratory,
+    image: serviceImages.laboratory,
     tone: 'standard',
-    items: [
-      {
-        title: 'Subacute care',
-        description: 'Respiratory, ventilator, tracheostomy, wound care',
-        link: links.subacuteCare,
-        photo: { image: serviceImages.subacute, cropY: 45 },
-      },
-      {
-        title: 'Rehabilitation',
-        description: 'Return home safely',
-        link: links.rehabilitation,
-        photo: { image: serviceImages.rehabilitation, cropY: 15 },
-      },
-      {
-        title: 'Behavioral health',
-        description: 'Evidence-based treatment',
-        link: links.behavioralHealth,
-        photo: { image: serviceImages.mentalHealthUnit, cropY: 55 },
-      },
-    ],
   },
   {
-    heading: 'Tests and outpatient care',
+    title: 'Surgery',
+    description: 'Planned and emergency surgery',
+    link: links.surgery,
+    image: serviceImages.medicalSurgical,
     tone: 'standard',
-    items: [
-      {
-        title: 'Imaging',
-        description: 'Radiology and nuclear medicine',
-        link: links.imaging,
-        photo: { image: serviceImages.imaging, cropY: 65 },
-      },
-      {
-        title: 'Laboratory',
-        description: 'Tests ordered by your doctors',
-        link: links.laboratory,
-        photo: { image: serviceImages.laboratory, cropY: 40 },
-      },
-      {
-        title: 'Pharmacy',
-        description: 'For hospital patients',
-        link: links.pharmacy,
-        photo: { image: serviceImages.pharmacy, cropY: 55 },
-      },
-      {
-        title: 'Outpatient treatments',
-        description: 'Care without an overnight stay',
-        link: links.outpatient,
-        // Text only: no existing photo shows outpatient care in general.
-        photo: null,
-      },
-    ],
   },
 ]
 

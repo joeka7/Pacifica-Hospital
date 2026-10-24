@@ -1,13 +1,17 @@
-import type { CSSProperties } from 'react'
-import { serviceGroups, servicesSection } from '../../content/services'
+import { useState } from 'react'
+import { featuredServices, servicesSection, type FeaturedService } from '../../content/services'
+import { cx } from '../../utils/cx'
+import { ArrowIcon } from '../ArrowIcon/ArrowIcon'
 import { ArrowLink } from '../ArrowLink/ArrowLink'
 import { Container } from '../Container/Container'
-import { ServiceGroup } from './ServiceGroup'
+import { ResponsiveImage } from '../ResponsiveImage/ResponsiveImage'
+import { imageSizes } from '../ResponsiveImage/sizes'
 import styles from './ServicesDirectory.module.css'
 
-// Grid rows each group spans: its header, then one per service of the longest group.
-const groupRows = 1 + Math.max(...serviceGroups.map((group) => group.items.length))
-
+/**
+ * Home "Find the care you need": four featured services, in one row on
+ * desktop and two by two below 1080px. The full list is on /services.
+ */
 export function ServicesDirectory() {
   return (
     <section className={styles.section} aria-labelledby="services-heading">
@@ -20,12 +24,45 @@ export function ServicesDirectory() {
             {servicesSection.allServices.label}
           </ArrowLink>
         </div>
-        <div className={styles.grid} style={{ '--group-rows': groupRows } as CSSProperties}>
-          {serviceGroups.map((group) => (
-            <ServiceGroup key={group.heading} group={group} />
+        <ul className={styles.grid}>
+          {featuredServices.map((service) => (
+            <FeaturedServiceItem key={service.title} service={service} />
           ))}
-        </div>
+        </ul>
       </Container>
     </section>
+  )
+}
+
+function FeaturedServiceItem({ service }: { service: FeaturedService }) {
+  // A photo that fails to load is dropped rather than left as an empty box.
+  const [imageFailed, setImageFailed] = useState(false)
+  const content = (
+    <>
+      {!imageFailed && (
+        <ResponsiveImage
+          image={service.image}
+          sizes={imageSizes.featuredService}
+          decorative
+          onError={() => setImageFailed(true)}
+          className={styles.image}
+        />
+      )}
+      <span className={styles.title}>{service.title}</span>
+      <span className={styles.description}>{service.description}</span>
+    </>
+  )
+
+  return (
+    <li className={cx(styles.item, service.tone === 'emergency' && styles.emergency)}>
+      {service.link.href === null ? (
+        <div className={styles.link}>{content}</div>
+      ) : (
+        <a href={service.link.href} className={styles.link}>
+          {content}
+          <ArrowIcon size={18} className={styles.arrow} />
+        </a>
+      )}
+    </li>
   )
 }
