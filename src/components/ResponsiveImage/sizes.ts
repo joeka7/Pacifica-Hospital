@@ -40,6 +40,11 @@ function css({ vw, px }: Length): string {
   return `calc(${round(vw)}vw ${px < 0 ? '-' : '+'} ${round(Math.abs(px))}px)`
 }
 
+/** One of `count` equal columns, `gap` pixels apart. */
+function equalColumns(count: number, gap: number, container: Length): Length {
+  return { vw: container.vw / count, px: (container.px - gap * (count - 1)) / count }
+}
+
 /** `columns` of the 12-column editorial grid. */
 function gridSpan(columns: number, container: Length): Length {
   return {
@@ -120,6 +125,9 @@ const heroStackBelow = heroMedia.basis + heroText.basis + heroGap - content.tabl
 const featureImage = { basis: 380, grow: 5 }
 const featureText = { basis: 440, grow: 6 }
 
+// ServicesDirectory.module.css: .grid is 4 / 2 / 1 columns, 32px apart.
+const servicesGap = 32
+
 export const imageSizes = {
   /** Home hero. 16:10 box and photo, so nothing is cropped. */
   hero: sizes(
@@ -140,6 +148,15 @@ export const imageSizes = {
   mentalHealthFeature: contained(
     flexShare(featureImage, featureText, 96, content.desktop),
     content.tablet,
+    content.mobile,
+  ),
+  /**
+   * Home services directory, photo strip above each service: one group column.
+   * 21:9 and 3:1 boxes crop a 3:2 photo top and bottom only, so no factor.
+   */
+  serviceGroup: contained(
+    equalColumns(4, servicesGap, content.desktop),
+    equalColumns(2, servicesGap, content.tablet),
     content.mobile,
   ),
   /** Home careers band: full-bleed half (flex 1 1 440px each), full width once stacked. */

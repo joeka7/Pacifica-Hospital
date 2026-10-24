@@ -10,9 +10,22 @@ interface ResponsiveImageProps {
   priority?: boolean
   /** Set --ratio (and optionally --image-height / --image-min-height) from this class. */
   className?: string
+  /** Empty alt text, for a photo inside a link whose text already names the destination. */
+  decorative?: boolean
+  /** Per-photo crop position under object-fit: cover, where one slot shows several photos. */
+  objectPosition?: string
+  onError?: () => void
 }
 
-export function ResponsiveImage({ image, sizes, priority = false, className }: ResponsiveImageProps) {
+export function ResponsiveImage({
+  image,
+  sizes,
+  priority = false,
+  className,
+  decorative = false,
+  objectPosition,
+  onError,
+}: ResponsiveImageProps) {
   return (
     <img
       className={cx(styles.image, className)}
@@ -21,10 +34,12 @@ export function ResponsiveImage({ image, sizes, priority = false, className }: R
       src={image.src}
       width={image.width}
       height={image.height}
-      alt={image.alt}
+      alt={decorative ? '' : image.alt}
       loading={priority ? 'eager' : 'lazy'}
       decoding={priority ? undefined : 'async'}
       fetchPriority={priority ? 'high' : undefined}
+      style={objectPosition ? { objectPosition } : undefined}
+      onError={onError}
     />
   )
 }

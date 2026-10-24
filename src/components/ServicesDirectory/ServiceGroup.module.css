@@ -19,3 +19,35 @@
   display: flex;
   border-bottom: 1px solid var(--color-rule);
 }
+
+/*
+ * Photo strip above every service title. 3:2 photos are cropped top and
+ * bottom only; each service sets its own vertical position (services.ts).
+ * 3:1 on tablet, where the two-column grid makes each strip wider.
+ */
+.media {
+  --ratio: 21 / 9;
+}
+
+@media (max-width: 1079px) {
+  .media {
+    --ratio: 3 / 1;
+  }
+}
+
+@media (max-width: 767px) {
+  .media {
+    --ratio: 21 / 9;
+  }
+}
+
+.image {
+  background: var(--color-photo);
+}
+
+/* A service with no suitable photo yet. */
+.gap {
+  display: block;
+  aspect-ratio: var(--ratio);
+  background: var(--color-photo-light);
+}

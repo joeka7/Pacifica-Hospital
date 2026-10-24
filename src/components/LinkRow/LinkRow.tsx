@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import { cx } from '../../utils/cx'
 import { ArrowIcon } from '../ArrowIcon/ArrowIcon'
 import styles from './LinkRow.module.css'
@@ -10,10 +11,16 @@ interface LinkRowProps {
   title: string
   description?: string
   variant: LinkRowVariant
+  /**
+   * A photo shown above the title, inside the link, so photo and text are one
+   * link with one name and share the row's hover state.
+   */
+  media?: ReactNode
 }
 
-export function LinkRow({ href, title, description, variant }: LinkRowProps) {
-  const classes = cx(styles.row, styles[variant])
+export function LinkRow({ href, title, description, variant, media }: LinkRowProps) {
+  const classes = cx(styles.row, styles[variant], media != null && styles.hasMedia)
+  const mediaSlot = media != null && <span className={styles.media}>{media}</span>
   const text = (
     <span className={styles.text}>
       <span className={styles.title}>{title}</span>
@@ -22,11 +29,17 @@ export function LinkRow({ href, title, description, variant }: LinkRowProps) {
   )
 
   if (href === null) {
-    return <div className={classes}>{text}</div>
+    return (
+      <div className={classes}>
+        {mediaSlot}
+        {text}
+      </div>
+    )
   }
 
   return (
     <a href={href} className={classes}>
+      {mediaSlot}
       {text}
       <ArrowIcon size={variant === 'quick' ? 20 : 18} className={styles.arrow} />
     </a>

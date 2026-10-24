@@ -52,6 +52,21 @@ a.row:hover .arrow {
   transform: translateX(4px);
 }
 
+/*
+ * Media above the text: a grid, so the photo spans the row while the text
+ * and arrow keep their columns and the arrow never wraps below the title.
+ */
+.hasMedia {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 16px;
+  row-gap: 12px;
+}
+
+.media {
+  grid-column: 1 / -1;
+}
+
 /* Quick access: the end padding is a custom property so the list can drop it. */
 .quick {
   align-items: center;
