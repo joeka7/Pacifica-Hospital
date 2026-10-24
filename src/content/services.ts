@@ -5,8 +5,8 @@ import type { LabeledLink } from './site'
 export interface ServicePhoto {
   image: SiteImage
   /**
-   * Vertical crop position, as a percentage from the top. The wide strip
-   * crops a 3:2 photo top and bottom only, so this keeps the subject in frame.
+   * Vertical crop position, as a percentage from the top. The 16:9 tablet
+   * box crops a 3:2 photo top and bottom only, so this keeps the subject in frame.
    */
   cropY: number
 }
@@ -16,8 +16,10 @@ export interface ServiceItem {
   description: string
   link: LinkTarget
   /**
-   * Photo strip above the title, part of the same link. Null marks a service
-   * with no suitable photo yet: it shows an empty slot of the same size.
+   * Photo above the title, part of the same link. On the home directory it
+   * shows for a group's first service, and for every service in the mobile
+   * carousel. Null marks a service with no suitable photo yet: it is shown
+   * as text only.
    */
   photo: ServicePhoto | null
 }
@@ -49,7 +51,7 @@ export const serviceGroups: ServiceGroupData[] = [
         title: 'Mental Health Urgent Care Clinic',
         description: 'Crisis support around the clock',
         link: links.mentalHealthClinic,
-        // Gap: the clinic's only photo is the Mental Health feature directly below.
+        // Text only: the clinic's only photo is the Mental Health feature directly below.
         photo: null,
       },
     ],
@@ -129,7 +131,7 @@ export const serviceGroups: ServiceGroupData[] = [
         title: 'Outpatient treatments',
         description: 'Care without an overnight stay',
         link: links.outpatient,
-        // Gap: no existing photo shows outpatient care in general.
+        // Text only: no existing photo shows outpatient care in general.
         photo: null,
       },
     ],

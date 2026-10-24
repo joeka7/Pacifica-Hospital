@@ -20,30 +20,42 @@
   color: var(--color-navy);
 }
 
+/*
+ * Four group columns on desktop, two on tablet. Each group spans
+ * --group-rows rows (set in ServicesDirectory.tsx) and lines its header and
+ * services up with its neighbours through subgrid (ServiceGroup.module.css).
+ * No row gap: it would open between every service row.
+ */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 48px 32px;
-}
-
-/*
- * Pin the 4 / 2 / 1 column counts. auto-fit at 250px alone yields three
- * columns (one orphaned group) between roughly 1000px and 1175px.
- */
-@media (min-width: 1080px) {
-  .grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 32px;
 }
 
 @media (max-width: 1079px) {
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  /* Space between the two rows of groups. */
+  .grid > :nth-child(n + 3) {
+    margin-top: 48px;
+  }
 }
 
+/* Below 768px: one carousel per group, stacked. */
 @media (max-width: 767px) {
+  .header {
+    margin-bottom: 40px;
+  }
+
   .grid {
-    grid-template-columns: minmax(0, 1fr);
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  .grid > :nth-child(n + 3) {
+    margin-top: 0;
   }
 }

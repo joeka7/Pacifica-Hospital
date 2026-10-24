@@ -1,18 +1,41 @@
-.heading {
-  padding-top: 14px;
+/*
+ * From 768px each group is a column of the directory grid
+ * (ServicesDirectory.module.css) and shares its rows through subgrid: the
+ * header, the lead service with its photo, then one row per further
+ * service. A two-line description makes its whole row taller, so titles,
+ * photos and rules stay level across the columns.
+ */
+.group {
+  display: grid;
+  grid-row: span var(--group-rows);
+  grid-template-rows: subgrid;
+}
+
+.header {
+  padding: 14px 0 12px;
   border-top: 4px solid var(--color-navy);
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 1.4;
-  color: var(--color-text);
 }
 
 .emergency {
   border-top-color: var(--color-red);
 }
 
+.heading {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+/* Paging is only needed once the list scrolls (below 768px). */
+.controls {
+  display: none;
+}
+
 .list {
-  margin-top: 8px;
+  display: grid;
+  grid-row: 2 / -1;
+  grid-template-rows: subgrid;
 }
 
 .item {
@@ -20,34 +43,199 @@
   border-bottom: 1px solid var(--color-rule);
 }
 
+/* Only the lead's photo shows here; the others appear in the carousel. */
+.item:not(.lead) .image {
+  display: none;
+}
+
 /*
- * Photo strip above every service title. 3:2 photos are cropped top and
- * bottom only; each service sets its own vertical position (services.ts).
- * 3:1 on tablet, where the two-column grid makes each strip wider.
+ * Image across the top; title and arrow share a line, the description runs
+ * under the title. No row gap, so a hidden image leaves no space behind.
  */
-.media {
-  --ratio: 21 / 9;
+.link {
+  display: grid;
+  flex: 1 1 auto;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    'image image'
+    'title arrow'
+    'description .';
+  align-content: start;
+  column-gap: 16px;
+  min-width: 0;
+  padding: 16px 0;
+  color: var(--color-navy);
+  text-decoration: none;
 }
 
-@media (max-width: 1079px) {
-  .media {
-    --ratio: 3 / 1;
-  }
+.link:hover {
+  color: var(--color-navy);
 }
 
-@media (max-width: 767px) {
-  .media {
-    --ratio: 21 / 9;
-  }
+.lead .link {
+  padding-top: 0;
 }
 
+/*
+ * One photo shape per layout: 3:2 (the photos' own shape, uncropped) on
+ * desktop and in the carousel, 16:9 in the wider tablet columns, where
+ * each service's crop position (services.ts) keeps the subject in frame.
+ */
 .image {
+  --ratio: 3 / 2;
+  grid-area: image;
+  margin-bottom: 14px;
   background: var(--color-photo);
 }
 
-/* A service with no suitable photo yet. */
-.gap {
-  display: block;
-  aspect-ratio: var(--ratio);
-  background: var(--color-photo-light);
+.title {
+  grid-area: title;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-wrap: pretty;
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+a.link:hover .title {
+  text-decoration-color: currentColor;
+}
+
+.description {
+  grid-area: description;
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+  text-wrap: pretty;
+}
+
+.arrow {
+  grid-area: arrow;
+  margin-top: 3px;
+  color: var(--color-blue);
+  transition: transform var(--transition-fast);
+}
+
+a.link:hover .arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 1079px) {
+  .image {
+    --ratio: 16 / 9;
+  }
+}
+
+/*
+ * Below 768px: a carousel per group. The list scrolls sideways and snaps
+ * each slide to the page edge; it runs to the screen edge on the right so
+ * the next slide peeks in. Slides stretch to the tallest one, so the bottom
+ * rules line up. Text-only slides are narrower and ruled along the top
+ * where a photo would start.
+ */
+@media (max-width: 767px) {
+  .group {
+    display: block;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 10px 0 0;
+  }
+
+  .controls {
+    display: flex;
+    flex: none;
+    gap: 8px;
+  }
+
+  .list {
+    display: flex;
+    gap: 16px;
+    margin: 6px calc(-1 * var(--page-pad)) 0;
+    /* Block padding keeps the focus outline clear of the scroll clip. */
+    padding: 6px var(--page-pad);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--page-pad);
+    scrollbar-width: none;
+  }
+
+  .list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .item {
+    flex: 0 0 min(80%, 340px);
+    scroll-snap-align: start;
+  }
+
+  .item:not(.lead) .image {
+    display: block;
+  }
+
+  .image {
+    --ratio: 3 / 2;
+  }
+
+  .link,
+  .lead .link {
+    padding: 0 0 16px;
+  }
+
+  .textOnly {
+    flex-basis: min(58%, 240px);
+    border-top: 1px solid var(--color-rule-strong);
+  }
+
+  .textOnly .link {
+    padding-top: 14px;
+  }
+
+  .control {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--color-rule-strong);
+    border-radius: 0;
+    background: var(--color-white);
+    color: var(--color-navy);
+    cursor: pointer;
+    transition:
+      border-color var(--transition-fast),
+      color var(--transition-fast);
+  }
+
+  .control:hover {
+    border-color: var(--color-navy);
+  }
+
+  .control[aria-disabled='true'] {
+    border-color: var(--color-rule);
+    color: var(--color-rule-strong);
+    cursor: default;
+  }
+
+  /* scale, not transform: the reduced-motion reset clears transforms. */
+  .previous svg {
+    scale: -1 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a.link:hover .arrow {
+    transform: none;
+  }
 }

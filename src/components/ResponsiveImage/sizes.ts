@@ -125,8 +125,14 @@ const heroStackBelow = heroMedia.basis + heroText.basis + heroGap - content.tabl
 const featureImage = { basis: 380, grow: 5 }
 const featureText = { basis: 440, grow: 6 }
 
-// ServicesDirectory.module.css: .grid is 4 / 2 / 1 columns, 32px apart.
+// ServicesDirectory.module.css: .grid is 4 / 2 columns, 32px apart.
 const servicesGap = 32
+// ServiceGroup.module.css, below 768px: a slide is min(80%, 340px) of the
+// carousel, which runs edge to edge with --page-pad inside it.
+const serviceSlide: Length = scale(content.mobile, 0.8)
+const serviceSlideMax: Length = { vw: 0, px: 340 }
+// The viewport at which 80% reaches 340px: 0.8 × (vw − 40) = 340.
+const serviceSlideMaxFrom = Math.ceil(serviceSlideMax.px / 0.8 - content.mobile.px)
 
 export const imageSizes = {
   /** Home hero. 16:10 box and photo, so nothing is cropped. */
@@ -151,14 +157,21 @@ export const imageSizes = {
     content.mobile,
   ),
   /**
-   * Home services directory, photo strip above each service: one group column.
-   * 21:9 and 3:1 boxes crop a 3:2 photo top and bottom only, so no factor.
+   * Home services directory, first service of each group: one group column
+   * from 768px, a carousel slide below. 3:2 and 16:9 boxes crop a 3:2 photo
+   * top and bottom only, so no factor.
    */
-  serviceGroup: contained(
-    equalColumns(4, servicesGap, content.desktop),
-    equalColumns(2, servicesGap, content.tablet),
-    content.mobile,
+  serviceLead: sizes(
+    [
+      [CONTAINER, capped(equalColumns(4, servicesGap, content.desktop))],
+      [DESKTOP, equalColumns(4, servicesGap, content.desktop)],
+      [TABLET, equalColumns(2, servicesGap, content.tablet)],
+      [serviceSlideMaxFrom, serviceSlideMax],
+    ],
+    serviceSlide,
   ),
+  /** Home services directory, other services: carousel slides, hidden from 768px. */
+  serviceSlide: sizes([[serviceSlideMaxFrom, serviceSlideMax]], serviceSlide),
   /** Home careers band: full-bleed half (flex 1 1 440px each), full width once stacked. */
   careersBand: sizes([[440 * 2, scale(fullBleed, 1 / 2)]], fullBleed),
   /** About intro: 7 columns, 3:2 at every width. */
