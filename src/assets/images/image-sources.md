@@ -78,4 +78,5 @@ Checked 23 October 2026. The design image on [pacificahospital.com/contact-2/](h
 ## Reviewed but not used
 
 - Images on pacificahospital.com (checked 21 October 2026): stock photos with no recorded licence (for example `cora.jpg`, `doctor_phv_surg2.jpg`, `pexels-photo-1881170.jpeg`), low-resolution thumbnails (`*285x190.png`, `*410x269.png`, `phvOR1.jpg` at 425×235), and a text graphic (`2460_lght.png`, "ER 24 HR"). None were reused. The Contact page campus photo `70011.png` is covered above.
+- Images on /services/emergency-servives/, /services/laboratory-servives/ and /services/pharmacy-department/ (checked again 24 October 2026): theme stock and thumbnails at 442–451 px wide or smaller (`emergecyservice400x300.png`, `emergencyervice451x300.png`, `lab442x3302.png`, `labmachine442x300.png`, `pills442x300.jpeg`, `rx442x300.jpeg`, `placeholder.jpg`, the shared header photo `pexels-photo-1881170.jpeg`), with no recorded licence. None were added. Those pages keep `emergency-treatment-area`, `laboratory-centrifuge` and `pharmacy-medication-station` (above).
 - Unsplash and Pixabay: their search pages require an API key or a browser challenge, so they weren't used.

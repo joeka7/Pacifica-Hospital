@@ -9,11 +9,13 @@ import { PageClosing } from '../components/PageClosing/PageClosing'
 import { PageIntro } from '../components/PageIntro/PageIntro'
 import { ResponsiveImage } from '../components/ResponsiveImage/ResponsiveImage'
 import { imageSizes } from '../components/ResponsiveImage/sizes'
+import { RuledList } from '../components/RuledList/RuledList'
 import { links, servicePath } from '../content/links'
 import {
   findServicePage,
   serviceBreadcrumb,
   servicePageCopy,
+  type ServiceBand,
   type ServicePageData,
 } from '../content/servicePages'
 import { hospitalContacts } from '../content/site'
@@ -22,6 +24,43 @@ import styles from './ServicePage.module.css'
 
 interface ServicePageProps {
   page: ServicePageData
+}
+
+/** Text beside labeled panels of hours or short lists, each under a navy rule like the glance column. */
+function ServiceBandSection({ band }: { band: ServiceBand }) {
+  const headingId = `${band.id}-heading`
+
+  return (
+    <section id={band.id} className={shared.section} aria-labelledby={headingId}>
+      <Container className={shared.grid}>
+        <div className={styles.bandText}>
+          <h2 id={headingId} className={shared.headingMd}>
+            {band.heading}
+          </h2>
+          {band.text.map((paragraph) => (
+            <p key={paragraph} className={shared.body}>
+              {paragraph}
+            </p>
+          ))}
+        </div>
+        <div className={styles.panels}>
+          {band.panels.map((panel) => (
+            <div key={panel.heading} className={cx(styles.panel, 'rows' in panel && styles.panelWide)}>
+              <h3 className={cx(shared.eyebrow, styles.panelHeading)}>{panel.heading}</h3>
+              {'rows' in panel ? (
+                <HoursList rows={panel.rows} />
+              ) : (
+                <>
+                  {panel.label && <p className={styles.panelLabel}>{panel.label}</p>}
+                  <RuledList items={panel.items} />
+                </>
+              )}
+            </div>
+          ))}
+        </div>
+      </Container>
+    </section>
+  )
 }
 
 export function ServicePage({ page }: ServicePageProps) {
@@ -59,6 +98,8 @@ export function ServicePage({ page }: ServicePageProps) {
           </aside>
         </Container>
       </div>
+
+      {page.band && <ServiceBandSection band={page.band} />}
 
       <div className={shared.section}>
         <Container>

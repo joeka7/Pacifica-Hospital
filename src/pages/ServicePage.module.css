@@ -38,10 +38,60 @@
   margin-top: 8px;
 }
 
+/* Practical details band (lab: before your visit; pharmacy: hours). */
+.bandText {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  grid-column: 1 / span 5;
+  min-width: 0;
+}
+
+.bandText > p {
+  max-width: 34em;
+}
+
+.panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 40px var(--grid-gap);
+  grid-column: 7 / -1;
+  align-self: start;
+  min-width: 0;
+}
+
+.panel {
+  min-width: 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-navy);
+}
+
+/* Hours rows need the full width to keep each label and time on one line. */
+.panelWide {
+  grid-column: 1 / -1;
+}
+
+.panelHeading {
+  margin-bottom: 16px;
+}
+
+.panelLabel {
+  margin-bottom: 12px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
 @media (max-width: 1079px) {
   .media,
-  .glance {
+  .glance,
+  .bandText,
+  .panels {
     grid-column: 1 / -1;
+  }
+
+  .panels {
+    margin-top: 40px;
   }
 
   /* Full-width on tablets: a wider crop keeps the image from dominating. */

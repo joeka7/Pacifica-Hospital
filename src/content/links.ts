@@ -50,8 +50,6 @@ export const links = {
   imaging: internal(servicePath('imaging')),
   laboratory: internal(servicePath('laboratory')),
   pharmacy: internal(servicePath('pharmacy')),
-  /** The "Additional care" group (imaging, lab, pharmacy) on the services page. */
-  additionalCare: internal('/services#tests-and-pharmacy'),
 
   // Patients and visitors
   patientResourcesNav: internal('/patients'),

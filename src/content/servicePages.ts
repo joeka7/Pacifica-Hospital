@@ -26,6 +26,20 @@ export function describeSettings(settings: CareSetting[]): string {
   return text.charAt(0).toUpperCase() + text.slice(1)
 }
 
+/** One labeled column in a service band: rows of hours, or a short list. */
+export type ServicePanel =
+  | { heading: string; rows: HoursRow[] }
+  | { heading: string; label?: string; items: string[] }
+
+/** Practical details a patient acts on (what to bring, hours), shown after the overview. */
+export interface ServiceBand {
+  /** Used for the heading id and in-page anchors. */
+  id: string
+  heading: string
+  text: string[]
+  panels: ServicePanel[]
+}
+
 export interface ServicePageData {
   slug: string
   title: string
@@ -38,6 +52,7 @@ export interface ServicePageData {
   image: SiteImage
   /** Key facts beside the image: settings, hours, phone. */
   glance: HoursRow[]
+  band?: ServiceBand
   sections: ContentSectionData[]
   related: string[]
 }
@@ -658,10 +673,41 @@ export const servicePages: ServicePageData[] = [
     ],
     image: serviceImages.laboratory,
     glance: [
-      { label: 'Drawing station, Monday – Friday', value: '8:00 AM – 5:00 PM' },
+      settingsRow(['inpatient', 'outpatient']),
+      { label: 'Drawing station', value: 'Monday – Friday, 8:00 AM – 5:00 PM' },
       { label: 'Appointments', value: 'Not required' },
       questionsRow,
     ],
+    band: {
+      id: 'before-your-visit',
+      heading: 'Before your visit',
+      text: [
+        'For outpatient testing, your physician simply needs to order the blood work or specimen collection.',
+        'Walk-ins are welcome at the drawing station; no appointment is necessary.',
+      ],
+      panels: [
+        {
+          heading: 'What to provide',
+          label: 'Please contact our Admitting Office to provide:',
+          items: [
+            'A laboratory order from your physician showing the testing to be performed',
+            'Current insurance information',
+            'Official photo identification',
+          ],
+        },
+        {
+          heading: 'Payment',
+          label: 'The laboratory accepts:',
+          items: [
+            'Out-of-pocket payment',
+            'All Medicare plans',
+            'Medicaid',
+            'All PPO plans',
+            'Select HMO insurance plans',
+          ],
+        },
+      ],
+    },
     sections: [
       {
         id: 'testing',
@@ -669,53 +715,21 @@ export const servicePages: ServicePageData[] = [
         blocks: [
           {
             type: 'paragraph',
-            text: 'Our lab performs tests ordered by doctors for patients staying at our hospital, and for the public as an outpatient service. For outpatients, your physician simply needs to order blood work or specimen collection.',
+            text: 'Our lab performs tests ordered by doctors for patients staying at our hospital, and for the public as an outpatient service.',
           },
           {
             type: 'paragraph',
-            text: 'The drawing station serves inpatients and outpatients Monday through Friday, 8:00 AM to 5:00 PM. Walk-ins are welcome; no appointment is necessary.',
+            text: 'Our focus is medically led diagnostics: a broad range of tests that support physicians in delivering quality patient care.',
           },
         ],
       },
       {
-        id: 'before-your-visit',
-        heading: 'Before your visit',
+        id: 'testing-areas',
+        heading: 'Testing areas',
         blocks: [
           {
             type: 'list',
-            label: 'To help us serve you, please contact our Admitting Office to provide:',
-            items: [
-              'A laboratory order from your physician showing the testing to be performed',
-              'Current insurance information',
-              'Official photo identification',
-            ],
-          },
-          {
-            type: 'paragraph',
-            text: 'The laboratory accepts out-of-pocket payment, all Medicare, Medicaid and PPO plans, and select HMO insurance plans.',
-          },
-        ],
-      },
-      {
-        id: 'team',
-        heading: 'Our laboratory team',
-        blocks: [
-          {
-            type: 'paragraph',
-            text: 'Your laboratory team at Pacifica includes pathologists, medical technologists and medical technicians who meet and exceed the criteria set by the American Association of Blood Banks (AABB), the American Society for Histocompatibility and Immunogenetics (ASHI), the College of American Pathologists (CAP) and the Food and Drug Administration (FDA).',
-          },
-          {
-            type: 'paragraph',
-            text: 'Staff are available to consult with your physician, supporting an accurate diagnosis and a sooner recovery.',
-          },
-        ],
-      },
-      {
-        id: 'disciplines',
-        heading: 'Testing disciplines',
-        blocks: [
-          {
-            type: 'list',
+            label: 'Our laboratory’s work spans these disciplines:',
             items: [
               'Anatomic pathology',
               'Blood transfusion',
@@ -738,6 +752,20 @@ export const servicePages: ServicePageData[] = [
           },
         ],
       },
+      {
+        id: 'team',
+        heading: 'Our laboratory team',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: 'Your laboratory team at Pacifica includes pathologists, medical technologists and medical technicians who meet and exceed the criteria set by the American Association of Blood Banks (AABB), the American Society for Histocompatibility and Immunogenetics (ASHI), the College of American Pathologists (CAP) and the Food and Drug Administration (FDA).',
+          },
+          {
+            type: 'paragraph',
+            text: 'Staff are available to consult with your physician, supporting an accurate diagnosis and a sooner recovery.',
+          },
+        ],
+      },
     ],
     related: ['imaging', 'pharmacy', 'acute-care'],
   },
@@ -748,18 +776,36 @@ export const servicePages: ServicePageData[] = [
     settings: ['inpatient'],
     meta: meta(
       'Pharmacy Department',
-      'The onsite Pharmacy Department at Pacifica Hospital of the Valley provides comprehensive, 24-hour pharmacy service to hospital inpatients.',
+      'The onsite Pharmacy Department at Pacifica Hospital of the Valley fills medication orders for hospital inpatients 24 hours a day. Standard hours: Monday to Friday 7:00 AM – 11:00 PM; weekends and holidays 7:00 AM – 7:00 PM.',
     ),
     lead: [
       'The Pacifica Hospital Pharmacy Department provides medication and services to inpatients, helping ensure that patients get the right medication at the right time.',
     ],
     image: serviceImages.pharmacy,
     glance: [
-      { label: 'Inpatient fulfillment', value: '24 hours' },
-      { label: 'Monday – Friday', value: '7:00 AM – 11:00 PM' },
-      { label: 'Weekends and holidays', value: '7:00 AM – 7:00 PM' },
+      { label: 'Serves', value: 'Hospital inpatients' },
+      { label: 'Location', value: 'Onsite at the hospital' },
+      { label: 'Inpatient medication fulfillment', value: '24 hours' },
       questionsRow,
     ],
+    band: {
+      id: 'pharmacy-hours',
+      heading: 'Pharmacy hours',
+      text: [
+        'Medication orders for patients staying in the hospital are filled 24 hours a day.',
+        'The pharmacy’s published standard hours are shorter, and pharmacists are available for inquiries during the same hours. General inquiries are welcome.',
+      ],
+      panels: [
+        // The source lists standard hours and pharmacist inquiries separately, with the same times.
+        {
+          heading: 'Standard hours and pharmacist inquiries',
+          rows: [
+            { label: 'Monday – Friday', value: '7:00 AM – 11:00 PM' },
+            { label: 'Weekends and holidays', value: '7:00 AM – 7:00 PM' },
+          ],
+        },
+      ],
+    },
     sections: [
       {
         id: 'services',
@@ -776,34 +822,32 @@ export const servicePages: ServicePageData[] = [
         ],
       },
       {
-        id: 'onsite',
-        heading: 'An onsite pharmacy',
+        id: 'location',
+        heading: 'Pharmacy location',
         blocks: [
           {
             type: 'paragraph',
-            text: 'One of the biggest benefits of an in-house pharmacist is that they can speak directly with the medical team. Because the pharmacy is onsite, physicians can have pharmaceutical services expedited with care and speed.',
-          },
-          {
-            type: 'paragraph',
-            text: 'Pharmacists collaborate with all members of the health care team and with caregivers to provide the best patient care.',
+            text: 'The pharmacy is located onsite at the hospital. One of the biggest benefits of an in-house pharmacist is that they can speak directly with the medical team, and physicians can have pharmaceutical services expedited with care and speed.',
           },
         ],
       },
       {
-        id: 'hours',
-        heading: 'Full-service pharmacy',
+        id: 'care-team',
+        heading: 'Working with your care team',
         blocks: [
           {
-            type: 'list',
-            items: [
-              '24-hour inpatient fulfillment',
-              'Pharmacist expertise in medication management',
-              'General inquiries welcome',
-            ],
+            type: 'paragraph',
+            text: 'Pharmacists collaborate with all members of the health care team and with caregivers to provide the best patient care.',
           },
           {
-            type: 'paragraph',
-            text: 'Standard hours and pharmacist inquiries: Monday through Friday, 7:00 AM to 11:00 PM; weekends and holidays, 7:00 AM to 7:00 PM.',
+            type: 'list',
+            label: 'Our hospital pharmacists:',
+            items: [
+              'Take an active role in patient care',
+              'Monitor patient profiles',
+              'Provide full-service pharmacy support to the clinicians caring for our patients',
+              'Bring expertise in medication management',
+            ],
           },
         ],
       },
@@ -833,7 +877,7 @@ export interface DirectoryEntry {
 }
 
 export interface DirectoryGroup {
-  /** Anchor id; "tests-and-pharmacy" is the main nav's "Additional care" target. */
+  /** Anchor id for in-page links. */
   id: string
   number: string
   heading: string

@@ -29,6 +29,116 @@ a.link[aria-current] {
   text-underline-offset: 8px;
 }
 
+/*
+ * Dropdown group. The panel is positioned against the header bar (.inner in
+ * SiteHeader.module.css), so it opens flush with the bar's bottom edge; its
+ * left edge is its static position, under the trigger.
+ */
+.trigger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--color-navy);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.trigger:hover,
+.trigger[aria-expanded='true'] {
+  color: var(--color-blue);
+}
+
+.trigger:hover .triggerLabel {
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+/* Matches a.link[aria-current]: one of the group's pages is being viewed. */
+.trigger[data-current] .triggerLabel {
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--color-blue);
+  text-underline-offset: 8px;
+}
+
+.chevron {
+  transition: transform var(--transition-fast);
+}
+
+.trigger[aria-expanded='true'] .chevron {
+  transform: rotate(180deg);
+}
+
+/* Covers the bar padding between the trigger and the panel, so the pointer stays over the group on the way down. */
+.trigger[aria-expanded='true']::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 40px;
+}
+
+.panel {
+  position: absolute;
+  top: 100%;
+  z-index: 20;
+  /* Aligns the link text with the trigger text. */
+  margin-left: -20px;
+  min-width: 264px;
+  max-width: calc(100vw - 2 * var(--page-pad));
+}
+
+.panel[hidden] {
+  display: none;
+}
+
+.panelList {
+  padding: 8px 0;
+  background: var(--color-white);
+  border: 1px solid var(--color-rule);
+  border-top: 2px solid var(--color-navy);
+}
+
+.panelLink {
+  display: block;
+  padding: 12px 20px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--color-navy);
+  text-decoration: none;
+}
+
+a.panelLink:hover {
+  color: var(--color-blue);
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+a.panelLink[aria-current] {
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--color-blue);
+  text-underline-offset: 6px;
+}
+
+/* Inside the row, so the ring isn't cut off by the panel edge or the next row. */
+.panelLink:focus-visible {
+  outline-offset: -4px;
+}
+
 /* Header room is tight just above the tablet breakpoint. */
 @media (max-width: 1119px) {
   .list {

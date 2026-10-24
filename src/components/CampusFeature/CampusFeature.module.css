@@ -3,11 +3,11 @@
 }
 
 /*
- * The photo is wider than 4:3 and taller than 21:8, so only one axis is ever
+ * The photo is wider than 4:3 and taller than 27:8, so only one axis is ever
  * cropped: x keeps the whole sign on mobile, y keeps its name on desktop.
  */
 .image {
-  --ratio: 21 / 8;
+  --ratio: 27 / 8;
   --image-min-height: 360px;
   object-position: left 25%;
 }

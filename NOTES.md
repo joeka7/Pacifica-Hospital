@@ -11,7 +11,7 @@ Items to confirm with PHV before launch. Code locations are noted so each can be
 ## Link destinations
 
 - **Spanish ("Español")**: no destination exists. It renders as plain text until `links.spanish.href` is set in `src/content/links.ts`.
-- **Interim destinations**: resolved. Every homepage link that pointed to pacificahospital.com (or to an interim stand-in) now points to its local page; see "Interior pages" below. Main nav "Additional care" goes to the "Tests and pharmacy" group on `/services`, and "Patient resources" goes to `/patients`.
+- **Interim destinations**: resolved. Every homepage link that pointed to pacificahospital.com (or to an interim stand-in) now points to its local page; see "Interior pages" below. Main nav "Additional care" is a dropdown (see "Navigation decisions" below), and "Patient resources" goes to `/patients`.
 
 ## Photography
 
@@ -86,8 +86,8 @@ All copy is in `src/content/` (one file per page or area); page layouts are in `
 
 ## Navigation decisions
 
-1. **No dropdown menus.** The source header has dropdowns; the approved header is a flat list, so it is unchanged. Sub-pages are reached from the landing pages (`/services`, `/patients`). Confirm, or approve adding dropdowns to the header.
-2. **Home and Contact in the header.** The flat list starts with "Home" and ends with "About us". "Contact" is the header button (desktop) and the full-width button below the list (mobile menu), replacing "Find a physician"; it is not repeated in the list. It also sits under "About Pacifica Hospital" in the footer "About" column, and is reached from the hero ("Plan your visit"), About, Patients and the closing sections.
+1. **One dropdown: "Additional care".** Added 24 October 2026. It is a button, not a link (it used to go to the "Tests and pharmacy" group on `/services`, which "Get care" already reaches), and opens a list of exactly three pages: Emergency Services (`/emergency`), Laboratory Services (`/services/laboratory`) and Pharmacy Department (`/services/pharmacy`). The source's "Additional care" menu lists Imaging instead of Emergency; this list was specified for the new site, and Imaging is still reached from `/services`. Desktop: opens on hover, click/tap, Enter or Space; arrow keys, Home and End move between the links; Escape, a press outside or tabbing away closes it. Mobile menu: tapping the row expands it in place. Code: `mainNav` in `src/content/navigation.ts`, `src/components/SiteHeader/NavDropdown.tsx` and `MobileMenu.tsx`. The other items stay plain links; other sub-pages are reached from the landing pages (`/services`, `/patients`).
+2. **Home and Contact in the header.** The list starts with "Home" and ends with "About us". "Contact" is the header button (desktop) and the full-width button below the list (mobile menu), replacing "Find a physician"; it is not repeated in the list. It also sits under "About Pacifica Hospital" in the footer "About" column, and is reached from the hero ("Plan your visit"), About, Patients and the closing sections.
 3. **Footer** labels are unchanged; "HIPAA privacy" and "Legal terms" now go to `/privacy` and `/legal`.
 
 ## Physician directory
@@ -102,6 +102,8 @@ Retired by scope decision: the site covers the hospital, its departments, servic
    - Laboratory: staff "meet and exceed the criteria set by" AABB, ASHI, CAP and FDA. The source sentence is garbled; it was reconstructed with the same four bodies.
    - Subacute: "Pacifica has cared for respiratory patients since 1994" (source: "a stellar reputation as an industry leader … since 1994").
    - Rehabilitation: confirm the post-COVID-19 program is still offered, and that outpatient therapy serves "any age group" including pediatrics, given the hospital otherwise describes itself as serving adults.
+   - Pharmacy: the source gives "24Hr Inpatient Fulfillment" and, separately, standard hours and pharmacist inquiry hours (Monday to Friday 7:00 AM – 11:00 PM; weekends and holidays 7:00 AM – 7:00 PM). `/services/pharmacy` keeps the two apart and says the department serves inpatients; it does not mention a public or outpatient pharmacy counter because the source doesn't. Confirm whether one exists before adding it.
+   - Laboratory: the source gives no phone number for the Admitting Office, so the page names it without a number. Supply one if patients should call it directly.
    - Emergency Department: the source says walk-in treatment "in adults and children"; this phrase was omitted because the rest of the site says adults. Confirm.
    - Imaging: the homepage directory (approved) says "Radiology and nuclear medicine", but the source imaging page lists no nuclear medicine services. Confirm before launch.
 4. **Emergency conditions**: the source "Back Pain" and "Fever" entries were omitted. The Back Pain text repeats the page introduction, and the list under "Fever" (sudden numbness, vision loss, loss of bladder or bowel control) reads as back-pain warning signs. Supply corrected text if they should appear.
@@ -123,7 +125,7 @@ The Contact page photo is interim stock (`contactReception` in `src/content/imag
 
 ## New microcopy needing sign-off
 
-Page headings and leads not taken from the source, including: "Care for every stage of a hospital stay." (Services), "Questions about your care?" (service closings), "Patients and visitors." and its lead, "Policies and notices." and its lead (Legal), "A place for your career." (Careers), "Directions to the Emergency Department.", "We’re here to help you improve along your healing journey." (adapted from the clinic page), the service directory group names and one-line service summaries, the "Related services" heading, "Emergency care team" (Emergency), and the contact form's unavailable note.
+Page headings and leads not taken from the source, including: "Care for every stage of a hospital stay." (Services), "Questions about your care?" (service closings), "Patients and visitors." and its lead, "Policies and notices." and its lead (Legal), "A place for your career." (Careers), "Directions to the Emergency Department.", "We’re here to help you improve along your healing journey." (adapted from the clinic page), the service directory group names and one-line service summaries, the "Related services" heading, "Emergency care team" (Emergency), the contact form's unavailable note, and (24 October 2026) the Laboratory headings "Before your visit" and "Testing areas" and the Pharmacy headings "Pharmacy hours" and "Working with your care team", with their short introductory lines.
 
 ## External links
 

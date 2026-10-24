@@ -16,10 +16,34 @@ export const utilityLinks: UtilityLink[] = [
   { label: 'Careers', link: links.careers },
 ]
 
-export const mainNav: LabeledLink[] = [
+/** A main-nav item that opens a list of links instead of going to a page of its own. */
+export interface NavGroup {
+  label: string
+  items: LabeledLink[]
+}
+
+export type MainNavItem = LabeledLink | NavGroup
+
+export function isNavGroup(item: MainNavItem): item is NavGroup {
+  return 'items' in item
+}
+
+/** Hrefs of every link inside a main-nav group. */
+export function navGroupHrefs(group: NavGroup): (string | null)[] {
+  return group.items.map((item) => item.link.href)
+}
+
+export const mainNav: MainNavItem[] = [
   { label: 'Home', link: links.home },
   { label: 'Get care', link: links.allServices },
-  { label: 'Additional care', link: links.additionalCare },
+  {
+    label: 'Additional care',
+    items: [
+      { label: 'Emergency Services', link: links.emergencyDepartment },
+      { label: 'Laboratory Services', link: links.laboratory },
+      { label: 'Pharmacy Department', link: links.pharmacy },
+    ],
+  },
   { label: 'Mental health', link: links.mentalHealthClinic },
   { label: 'Patient resources', link: links.patientResourcesNav },
   { label: 'About us', link: links.aboutPage },

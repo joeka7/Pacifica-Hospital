@@ -3,7 +3,9 @@
   border-bottom: 1px solid var(--color-rule);
 }
 
+/* Positioned so the main-nav dropdown opens at the bar's bottom edge. */
 .inner {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
